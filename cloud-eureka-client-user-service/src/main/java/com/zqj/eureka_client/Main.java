@@ -1,4 +1,4 @@
-package com.zqj;
+package com.zqj.eureka_client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
