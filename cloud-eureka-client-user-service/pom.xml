@@ -42,6 +42,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!--健康检查actuator-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!--版本管理,统一cloud的版本-->
