@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @create 2020-01-02 11:38
  */
 
-@FeignClient("cloud-eureka-client-user-service")
+@FeignClient(value = "cloud-eureka-client-user-service",fallback = StudentRemoteClientFallback.class)
 public interface StudentRemoteClient {
 
     @GetMapping("/student/info")
