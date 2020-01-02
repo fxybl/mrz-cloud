@@ -60,6 +60,19 @@
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
 
+        <!--feign依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!--依赖feign-api-->
+        <dependency>
+            <groupId>com.zqj</groupId>
+            <artifactId>cloud-feign-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <!--版本管理,统一cloud的版本-->
