@@ -1,0 +1,38 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #开启为所有服务都进行转发操作
+          enabled: true
+          #开启小写的服务ID
+          lower-case-service-id: true
+      routes:
+        - id: cloud-eureka-client-user-service
+          #lb代表是从注册中心获取
+          uri: lb://cloud-eureka-client-user-service
+          predicates:
+            - Path=/cloud-eureka-client-user-service/**
+        - id: cloud-eureka-client-article-service
+          uri: lb://cloud-eureka-client-article-service
+          predicates:
+            - Path=/cloud-eureka-client-article-service/**
+
+
+
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 10000
+    lease-expiration-duration-in-seconds: 10000
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://zqj:666666@localhost:8081/eureka/
+
+
