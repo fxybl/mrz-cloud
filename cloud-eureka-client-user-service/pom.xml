@@ -55,6 +55,12 @@
             <version>1.0</version>
         </dependency>
 
+        <!--feign依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
     </dependencies>
 
     <!--版本管理,统一cloud的版本-->
