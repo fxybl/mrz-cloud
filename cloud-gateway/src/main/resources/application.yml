@@ -16,6 +16,7 @@ spring:
           #lb代表是从注册中心获取
           uri: lb://cloud-eureka-client-user-service
           predicates:
+            #通过Path方式对请求路径进行过滤
             - Path=/cloud-eureka-client-user-service/**
         - id: cloud-eureka-client-article-service
           uri: lb://cloud-eureka-client-article-service
