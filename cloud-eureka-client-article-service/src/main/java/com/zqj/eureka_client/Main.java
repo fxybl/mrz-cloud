@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @create 2019-12-31 16:28
  */
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.zqj.feign_api","com.zqj.eureka_client"})
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.zqj.feign_api")
 @EnableHystrix
