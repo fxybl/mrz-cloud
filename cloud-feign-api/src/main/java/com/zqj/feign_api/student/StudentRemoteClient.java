@@ -2,6 +2,7 @@ package com.zqj.feign_api.student;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author zqj
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface StudentRemoteClient {
 
     @GetMapping("/student/info")
-    Student getStudent(String name);
+    //不加RequestParam会报Request method 'POST' not supported（即便使用的get请求，也会报这个错误）
+    Student getStudent(@RequestParam("name") String name);
 
 
 }
