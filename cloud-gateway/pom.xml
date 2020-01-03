@@ -16,6 +16,8 @@
     </parent>
 
     <dependencies>
+
+        <!--网关的依赖，引入了这个，就不能再引入spring-boot-starter-web,因为2者都是使用的DispatcherServlet,同时存在会冲突-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
@@ -24,6 +26,19 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zqj</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

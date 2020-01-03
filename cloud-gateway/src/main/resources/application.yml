@@ -5,42 +5,39 @@ spring:
     name: cloud-gateway
   cloud:
     gateway:
-      #¿çÓòÅäÖÃ
+      #è·¨åŸŸé…ç½®
       globalcors:
         cors-configurations:
           '[/**]':
             allowedOrigins: "*"
             exposedHeaders:
-              - content-type
+            - content-type
             allowedHeaders:
-              - content-type
+            - content-type
             allowCredentials: true
             allowedMethods:
-              - GET
-              - OPTIONS
-              - PUT
-              - DELETE
-              - POST
+            - GET
+            - OPTIONS
+            - PUT
+            - DELETE
+            - POST
       discovery:
         locator:
-          #¿ªÆôÎªËùÓĞ·şÎñ¶¼½øĞĞ×ª·¢²Ù×÷
+          #å¼€å¯ä¸ºæ‰€æœ‰æœåŠ¡éƒ½è¿›è¡Œè½¬å‘æ“ä½œ
           enabled: true
-          #¿ªÆôĞ¡Ğ´µÄ·şÎñID
+          #å¼€å¯å°å†™çš„æœåŠ¡ID
           lower-case-service-id: true
       routes:
         - id: cloud-eureka-client-user-service
-          #lb´ú±íÊÇ´Ó×¢²áÖĞĞÄ»ñÈ¡
+          #lbä»£è¡¨æ˜¯ä»æ³¨å†Œä¸­å¿ƒè·å–
           uri: lb://cloud-eureka-client-user-service
           predicates:
-            #Í¨¹ıPath·½Ê½¶ÔÇëÇóÂ·¾¶½øĞĞ¹ıÂË
+            #é€šè¿‡Pathæ–¹å¼å¯¹è¯·æ±‚è·¯å¾„è¿›è¡Œè¿‡æ»¤
             - Path=/cloud-eureka-client-user-service/**
         - id: cloud-eureka-client-article-service
           uri: lb://cloud-eureka-client-article-service
           predicates:
             - Path=/cloud-eureka-client-article-service/**
-
-
-
 
 eureka:
   instance:
