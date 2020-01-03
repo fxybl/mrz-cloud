@@ -12,12 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 自定义异常处理
- * 
- * <p>异常时用JSON代替HTML异常信息<p>
- * 
- * @author zqj
  *
+ * 自定义异常处理
+ * 异常时用JSON代替HTML异常信息
+ * @author zqj
+ * @create 2020-01-03 15:02
  */
 public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
 
