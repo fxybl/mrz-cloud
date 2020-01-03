@@ -50,7 +50,7 @@ public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
 	}
 
 	/**
-	 * 根据code获取对应的HttpStatus
+	 * 根据code获取对应的HttpStatus（原始是使用status来获取，我们定义的是code，所以需要重写）
 	 * @param errorAttributes
 	 */
 	@Override
