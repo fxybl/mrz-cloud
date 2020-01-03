@@ -4,6 +4,7 @@ spring:
   redis:
     host: 192.168.0.19
     port: 6379
+    database: 0
   application:
     name: cloud-gateway
   cloud:
