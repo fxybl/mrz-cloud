@@ -5,6 +5,22 @@ spring:
     name: cloud-gateway
   cloud:
     gateway:
+      #跨域配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            exposedHeaders:
+              - content-type
+            allowedHeaders:
+              - content-type
+            allowCredentials: true
+            allowedMethods:
+              - GET
+              - OPTIONS
+              - PUT
+              - DELETE
+              - POST
       discovery:
         locator:
           #开启为所有服务都进行转发操作
