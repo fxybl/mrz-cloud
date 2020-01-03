@@ -11,8 +11,8 @@ public enum ResponseCode {
     SUCCESS(200,"请求成功"),
     //参数错误
     PARAM_ERROR(400,"参数错误"),
-    //限制调用（限流）
-    LIMIT_ERROR(401,"请求过于频繁，请稍后再试"),
+    //限制调用（限流或者黑名单IP）
+    LIMIT_ERROR(401,"限制调用"),
     //token过期
     TOKEN_TIMEOUT(402,"token过期"),
     //没有权限
