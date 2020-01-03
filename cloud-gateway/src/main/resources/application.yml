@@ -49,17 +49,15 @@ spring:
                 name: fallbackcmd
                 #熔断时的回调地址
                 fallbackUri: forward:/gateway/fallback
-
                 #请求限流
             - name: RequestRateLimiter
               args:
                 #允许用户每秒处理多少请求
-                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.replenishRate: 10
                 #令牌桶的数量，允许在1秒内完成的最大请求数
-                redis-rate-limiter.burstCapacity: 1
+                redis-rate-limiter.burstCapacity: 15
                 #按名称引用bean，@bean下面的方法名即是其在spring容器中的ID
                 key-resolver: "#{@ipKeyResolver}"
-
                 #重试机制
             - name: Retry
               args:
