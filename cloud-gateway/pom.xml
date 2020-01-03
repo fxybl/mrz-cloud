@@ -40,6 +40,12 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--熔断器hystrix-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
     </dependencies>
 
     <!--版本管理,统一cloud的版本-->

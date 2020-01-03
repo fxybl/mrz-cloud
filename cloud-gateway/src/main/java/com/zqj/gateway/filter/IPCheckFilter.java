@@ -34,7 +34,7 @@ public class IPCheckFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         //实际中使用动态获取的方式获取黑名单IP
-        if("127.0.0.1".equals(IPUtils.getIP(exchange.getRequest()))){
+        if("192.168.0.1".equals(IPUtils.getIP(exchange.getRequest()))){
             ServerHttpResponse response = exchange.getResponse();
             ResponseData<Void> data = new ResponseData<>();
             data.setCode(ResponseCode.LIMIT_ERROR.getCode());

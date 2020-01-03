@@ -38,6 +38,13 @@ spring:
           uri: lb://cloud-eureka-client-article-service
           predicates:
             - Path=/cloud-eureka-client-article-service/**
+          filters:
+            #gateway网关的hystrix熔断器
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                #熔断时的回调地址
+                fallbackUri: forward:/gateway/fallback
 
 eureka:
   instance:
