@@ -49,7 +49,7 @@ spring:
                 name: fallbackcmd
                 #熔断时的回调地址
                 fallbackUri: forward:/gateway/fallback
-                #请求限流
+                #请求限流，目前限流不生效，也不报错。该加载的加载了，RedisRateLimiter中的isAllowed方法不会被执行，即便手动执行，也不会被写入redis中(原因未知)
             - name: RequestRateLimiter
               args:
                 #允许用户每秒处理多少请求
