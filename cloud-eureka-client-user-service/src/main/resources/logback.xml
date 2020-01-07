@@ -27,8 +27,10 @@
         <file>${LOG_PATH}/${APP_NAME}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/%d{yyyy-MM-dd}/${APP_NAME}.log</fileNamePattern>
+            <!--保留时间-->
             <maxHistory>7</maxHistory>
         </rollingPolicy>
+        <!--编码方式-->
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp>
