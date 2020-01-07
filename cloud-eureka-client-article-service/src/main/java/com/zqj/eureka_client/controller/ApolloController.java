@@ -1,5 +1,7 @@
 package com.zqj.eureka_client.controller;
 
+import com.ctrip.framework.apollo.model.ConfigChangeEvent;
+import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,14 @@ public class ApolloController {
     @GetMapping("/article/port")
     public String getPort(){
         return port;
+    }
+
+    //监听某字段改变
+    @ApolloConfigChangeListener
+    private void someOnChange(ConfigChangeEvent changeEvent) {
+        if(changeEvent.isChanged("article.server.port")) {
+            System.out.println("username发生修改了");
+        }
     }
 
 
