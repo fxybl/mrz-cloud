@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 测试apollo配置中心
  * @author zqj
  * @create 2020-01-07 10:03
  */
