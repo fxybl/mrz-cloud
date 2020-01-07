@@ -17,6 +17,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableHystrix
 public class Main {
     public static void main(String[] args) {
+        //设置环境
+        System.setProperty("env","DEV");
         SpringApplication.run(Main.class,args);
     }
 }
