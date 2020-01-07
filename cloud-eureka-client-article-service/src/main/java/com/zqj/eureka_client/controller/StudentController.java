@@ -1,5 +1,6 @@
 package com.zqj.eureka_client.controller;
 
+import brave.Tracer;
 import com.zqj.feign_api.student.Student;
 import com.zqj.feign_api.student.StudentRemoteClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,12 @@ public class StudentController {
     @Autowired
     private StudentRemoteClient studentRemoteClient;
 
+    @Autowired
+    Tracer tracer;
+
     @GetMapping("/student/info")
     public Student getStudentInfo(String name){
+        tracer.currentSpan().tag("zqj","666");
         return studentRemoteClient.getStudent(name);
     }
 }
