@@ -27,7 +27,7 @@ public class ApolloController {
     @ApolloConfigChangeListener
     private void someOnChange(ConfigChangeEvent changeEvent) {
         if(changeEvent.isChanged("article.server.port")) {
-            System.out.println("username发生修改了");
+            System.out.println("article.server.port修改了");
         }
     }
 
