@@ -35,6 +35,10 @@
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${LOG_PATTERN}</pattern>
         </encoder>
+        <!--日志文件最大的大小-->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
     </appender>
 
     <!--此包名下面的日志级别-->
