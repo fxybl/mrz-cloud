@@ -1,6 +1,5 @@
 package com.zqj.eureka_client.controller;
 
-import brave.Tracer;
 import com.zqj.feign_api.student.Student;
 import com.zqj.feign_api.student.StudentRemoteClient;
 import lombok.extern.slf4j.Slf4j;
