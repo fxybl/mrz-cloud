@@ -41,6 +41,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--spring-boot监控依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!--熔断器hystrix-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
