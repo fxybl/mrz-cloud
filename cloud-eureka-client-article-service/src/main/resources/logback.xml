@@ -8,6 +8,7 @@
     <property name="LOG_PATH" value="C:/Users/Administrator/Desktop/log"/>
     <springProperty scope="context" name="PORT" source="server.port"/>
     <!--日志格式表达式-->
+    <!--traceId(整个请求的唯一ID，它标识着整个请求的链路)  spanId(发起一次远程调用就是一个span)-->
     <property name="LOG_PATTERN"
               value="[%d{yyyy-MM-dd HH:mm:ss.SSS} ${APP_NAME} [%thread] %highlight(%-5level) %yellow(%X{X-B3-TraceId}),%green(%X{X-B3-SpanId}),%blue(%X{X-B3-ParentSpanId}) %green(%logger): %msg%n"/>
 
