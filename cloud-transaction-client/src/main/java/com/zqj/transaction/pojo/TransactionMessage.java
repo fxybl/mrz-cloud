@@ -5,6 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
+ * 事务消息实体类
  * @author zqj
  * @create 2020-01-08 18:01
  */
@@ -47,12 +48,5 @@ public class TransactionMessage {
 
     //消息死亡时间
     private Date dieDate;
-
-
-
-
-
-
-
 
 }
