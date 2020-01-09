@@ -2,11 +2,11 @@ package com.zqj.transaction_service.controller;
 
 import com.zqj.transaction.message.TransactionRemoteClient;
 import com.zqj.transaction.pojo.TransactionMessage;
+import com.zqj.transaction_service.enums.MessageEnum;
 import com.zqj.transaction_service.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,32 +34,32 @@ public class MessageController implements TransactionRemoteClient {
 
     @Override
     public boolean incrSendCount(Long messageId, String sendDate) {
-        return false;
+        return messageService.incrSendCount(messageId,sendDate);
     }
 
     @Override
-    public boolean retrySendDieMessage(String ids) {
-        return false;
+    public boolean retrySendDieMessage() {
+        return messageService.retrySendDieMessage();
     }
 
     @Override
     public boolean confirmCustomerMessage(Long messageId) {
-        return false;
+        return messageService.updateStatus(messageId, MessageEnum.OVER.getStatus());
     }
 
     @Override
     public boolean confirmDieMessage(Long messageId) {
-        return false;
+        return messageService.updateStatus(messageId, MessageEnum.DIE.getStatus());
     }
 
     @Override
     public List<TransactionMessage> queryByWaitingMessage(int limit) {
-        return new ArrayList<>();
+        return messageService.queryByWaitingMessage(limit);
     }
 
     @Override
     public List<TransactionMessage> queryMessagePage(int status, int currentPage, int pageSize) {
-        return new ArrayList<>();
+        return messageService.queryMessagePage(status,currentPage,pageSize);
     }
 
 

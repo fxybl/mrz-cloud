@@ -2,4 +2,95 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zqj.transaction_service.mapper.TransactionMessageMapper">
 
+    <insert id="save" parameterType="com.zqj.transaction.pojo.TransactionMessage">
+        insert into transaction_message(id, message, queue, send_system, send_count, create_date, send_date, status,
+                                        die_count, customer_date, customer_system, die_date)
+        values (#{id}, #{message}, #{queue}, #{sendSystem}, #{sendCount}, #{createDate}, #{sendDate}, #{status},
+                #{dieCount}, #{customerDate}, #{customerSystem}, #{dieDate})
+    </insert>
+
+    <insert id="saveBatch" parameterType="com.zqj.transaction.pojo.TransactionMessage">
+        insert into transaction_message(id, message, queue, send_system, send_count, create_date, send_date, status,
+        die_count, customer_date, customer_system, die_date)
+        values
+        <foreach collection="list" item="msg" index="index" separator=",">
+            (#{msg.id}, #{msg.message}, #{msg.queue}, #{msg.sendSystem}, #{msg.sendCount}, #{msg.createDate},
+            #{msg.sendDate}, #{msg.status},
+            #{msg.dieCount}, #{msg.customerDate}, #{msg.customerSystem}, #{msg.dieDate})
+        </foreach>
+    </insert>
+    <update id="updateStatus">
+        update transaction_message
+        set customer_date=now(),
+            send_date=now(),
+            `status`=#{param2}
+        where id = #{param1}
+    </update>
+
+    <update id="retrySendDieMessage">
+        update transaction_message
+        set `status`=0
+        where `status` = 2
+    </update>
+
+    <update id="updateSendCount">
+        update transaction_message
+        set send_count=#{param3},
+            send_date=#{sendDate}
+        where id = #{param1}
+    </update>
+
+    <select id="queryMessage" resultType="com.zqj.transaction.pojo.TransactionMessage">
+        select id,
+               message,
+               queue,
+               send_system     sendsystem,
+               send_count      sendCount,
+               create_date     createDate,
+               send_date       sendDate,
+               status,
+               die_count       dieCount,
+               customer_date   customerDate,
+               customer_system customerSystem,
+               die_date        dieDate
+        from transaction_message
+        where id = #{messageId}
+    </select>
+
+    <select id="queryMessages" resultType="com.zqj.transaction.pojo.TransactionMessage">
+        select id,
+               message,
+               queue,
+               send_system     sendsystem,
+               send_count      sendCount,
+               create_date     createDate,
+               send_date       sendDate,
+               status,
+               die_count       dieCount,
+               customer_date   customerDate,
+               customer_system customerSystem,
+               die_date        dieDate
+        from transaction_message
+        where `status` = #{status}
+    </select>
+
+    <select id="queryMessagesLimit" resultType="com.zqj.transaction.pojo.TransactionMessage">
+        select id,
+               message,
+               queue,
+               send_system     sendsystem,
+               send_count      sendCount,
+               create_date     createDate,
+               send_date       sendDate,
+               status,
+               die_count       dieCount,
+               customer_date   customerDate,
+               customer_system customerSystem,
+               die_date        dieDate
+        from transaction_message
+        where `status` = 0
+        limit 0,#{limit}
+    </select>
+
+
 </mapper>
