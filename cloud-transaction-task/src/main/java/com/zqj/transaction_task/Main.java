@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.zqj.transaction.message")
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class,args);

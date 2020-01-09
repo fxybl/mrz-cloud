@@ -45,6 +45,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
+
+        <!--事务客户端-->
+        <dependency>
+            <groupId>com.zqj</groupId>
+            <artifactId>cloud-transaction-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!--分布式锁，redisson-->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.10.2</version>
+        </dependency>
     </dependencies>
 
     <!--版本管理,统一cloud的版本-->
