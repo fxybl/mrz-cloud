@@ -41,7 +41,7 @@ public interface TransactionRemoteClient {
 
     //重新发送已经死亡的消息
     @PostMapping("/retrySendDieMessage")
-    boolean retrySendDieMessage(String ids);
+    boolean retrySendDieMessage();
 
     //根据状态分页查询消息
     @GetMapping("queryMessagePage")

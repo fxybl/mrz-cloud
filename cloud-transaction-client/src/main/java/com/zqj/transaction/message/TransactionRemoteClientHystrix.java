@@ -32,7 +32,7 @@ public class TransactionRemoteClientHystrix implements TransactionRemoteClient {
     }
 
     @Override
-    public boolean retrySendDieMessage(String ids) {
+    public boolean retrySendDieMessage() {
         return false;
     }
 
