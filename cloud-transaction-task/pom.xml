@@ -59,6 +59,13 @@
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.10.2</version>
         </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <!--版本管理,统一cloud的版本-->
