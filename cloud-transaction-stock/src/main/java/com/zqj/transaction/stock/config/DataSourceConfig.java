@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    @Value("cloud.datasource.url")
+    @Value("cloud.datasource.stock.url")
     private String url;
 
     @Value("cloud.datasource.username")
