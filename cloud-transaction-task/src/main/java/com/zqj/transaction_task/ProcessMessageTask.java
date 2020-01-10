@@ -68,7 +68,7 @@ public class ProcessMessageTask {
     private int process() throws Exception {
         //默认等待10秒
         int sleepTime = 10000;
-        //查询5000条数据出来
+        //查询等待消费的5000条数据出来
         List<TransactionMessage> transactionMessages = remoteClient.queryByWaitingMessage(5000);
         if (transactionMessages.size() == 5000) {
             //刚好等于5000，则有多余的数据没有查询出来
@@ -99,6 +99,7 @@ public class ProcessMessageTask {
     private void doProcess(TransactionMessage message) {
         //如果满足死亡条件，让消息死亡
         if (message.getSendCount() >= message.getDieCount()) {
+            //失败了不影响
             remoteClient.confirmDieMessage(message.getId());
             return;
         }
@@ -114,6 +115,7 @@ public class ProcessMessageTask {
             //增加发送次数
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String sendDate = format.format(new Date());
+            //失败了也不影响
             remoteClient.incrSendCount(message.getId(), sendDate);
         }
 

@@ -13,7 +13,7 @@ import java.util.concurrent.CountDownLatch;
  * @create 2020-01-09 16:25
  */
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.zqj")
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.zqj.transaction.message")
 public class Main {
