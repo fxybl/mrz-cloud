@@ -45,7 +45,7 @@ public class OrderMqConsumer {
             //手动确认
             text.acknowledge();
         }catch (Exception e){
-            //异常时会触发重试机制，重试次数用完后还是错误，消息会进入DLQ队列
+            //异常时会触发重试机制，重试次数用完后还是错误，消息会进入DLQ队列(死信队列)
             throw new RuntimeException(e);
         }
 
