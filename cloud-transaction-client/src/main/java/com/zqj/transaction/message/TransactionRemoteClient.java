@@ -33,7 +33,7 @@ public interface TransactionRemoteClient {
 
     //确定消息被消费
     @PostMapping("/confirmCustomerMessage")
-    boolean confirmCustomerMessage(@RequestParam("messageId") Long messageId);
+    boolean confirmCustomerMessage(@RequestParam("messageId") Long messageId,@RequestParam("consumerSystem") String consumerSystem);
 
     //查询最早的没有被消费的消息
     @GetMapping("/queryByWaitingMessage")

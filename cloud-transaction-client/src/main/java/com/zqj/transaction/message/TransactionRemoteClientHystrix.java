@@ -37,7 +37,7 @@ public class TransactionRemoteClientHystrix implements TransactionRemoteClient {
     }
 
     @Override
-    public boolean confirmCustomerMessage(Long messageId) {
+    public boolean confirmCustomerMessage(Long messageId,String consumerSystem) {
         return false;
     }
 
