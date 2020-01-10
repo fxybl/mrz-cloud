@@ -38,10 +38,10 @@ spring:
           predicates:
             #通过Path方式对请求路径进行过滤
             - Path=/cloud-eureka-client-user-service/**
-        - id: cloud-eureka-client-article-service
-          uri: lb://cloud-eureka-client-article-service
+        - id: cloud-eureka-client-consumer-service
+          uri: lb://cloud-eureka-client-consumer-service
           predicates:
-            - Path=/cloud-eureka-client-article-service/**
+            - Path=/cloud-eureka-client-consumer-service/**
           filters:
             #gateway网关的hystrix熔断器
             - name: Hystrix
