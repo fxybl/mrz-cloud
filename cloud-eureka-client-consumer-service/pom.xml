@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.zqj</groupId>
-    <artifactId>cloud-eureka-client-article-service</artifactId>
+    <artifactId>cloud-eureka-client-consumer-service</artifactId>
     <version>1.0</version>
 
     <!--统一springboot的版本-->
