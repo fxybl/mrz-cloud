@@ -1,9 +1,8 @@
 package com.zqj.transaction.order.mq;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zqj.transaction.message.TransactionRemoteClient;
-import com.zqj.transaction.order.pojo.Order;
 import com.zqj.transaction.order.service.OrderService;
-import com.zqj.transaction.pojo.TransactionMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -28,6 +27,8 @@ public class OrderMqConsumer {
     @JmsListener(destination = "order_create_queue")
     public void createOrderQueue(TextMessage text){
         try {
+            //将json转换成对象
+            JSONObject json = JSONObject.parseObject(text.getText());
             //手动确认
             text.acknowledge();
         }catch (Exception e){
