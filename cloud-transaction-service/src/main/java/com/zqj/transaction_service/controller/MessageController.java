@@ -43,8 +43,8 @@ public class MessageController implements TransactionRemoteClient {
     }
 
     @Override
-    public boolean confirmCustomerMessage(Long messageId) {
-        return messageService.updateStatus(messageId, MessageEnum.OVER.getStatus());
+    public boolean confirmCustomerMessage(Long messageId,String consumerSystem) {
+        return messageService.confirmCustomerMessage(messageId, MessageEnum.OVER.getStatus(),consumerSystem);
     }
 
     @Override

@@ -24,6 +24,9 @@
         set customer_date=now(),
             send_date=now(),
             `status`=#{param2}
+            <if test="param3 !=null">
+                ,customer_system=#{param3}
+            </if>
         where id = #{param1}
     </update>
 

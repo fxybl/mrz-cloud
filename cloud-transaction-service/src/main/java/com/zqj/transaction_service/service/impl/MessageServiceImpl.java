@@ -37,7 +37,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public boolean updateStatus(Long messageId, int status) {
-        mapper.updateStatus(messageId,status);
+        mapper.updateStatus(messageId,status,null);
         return true;
     }
 
@@ -63,5 +63,11 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<TransactionMessage> queryByWaitingMessage(int limit) {
         return mapper.queryMessagesLimit(limit);
+    }
+
+    @Override
+    public boolean confirmCustomerMessage(Long messageId, int status, String consumerSystem) {
+        mapper.updateStatus(messageId,status,consumerSystem);
+        return true;
     }
 }

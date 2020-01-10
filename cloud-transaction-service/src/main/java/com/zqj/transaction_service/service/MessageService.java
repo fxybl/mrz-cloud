@@ -25,4 +25,6 @@ public interface MessageService {
     Page<TransactionMessage> queryMessagePage(int status, int currentPage, int pageSize);
 
     List<TransactionMessage> queryByWaitingMessage(int limit);
+
+    boolean confirmCustomerMessage(Long messageId, int status,String consumerSystem);
 }

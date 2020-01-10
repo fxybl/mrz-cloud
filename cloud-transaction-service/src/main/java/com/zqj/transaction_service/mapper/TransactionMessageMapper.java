@@ -15,7 +15,7 @@ public interface TransactionMessageMapper {
 
     void saveBatch(List<TransactionMessage> messages);
 
-    void updateStatus(Long messageId, int status);
+    void updateStatus(Long messageId, int status,String consumerSystem);
 
     void retrySendDieMessage();
 
