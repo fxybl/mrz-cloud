@@ -1,13 +1,16 @@
 package com.zqj.transaction.order.mq;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zqj.transaction.message.TransactionRemoteClient;
 import com.zqj.transaction.order.service.OrderService;
+import com.zqj.transaction.pojo.TransactionMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import javax.jms.TextMessage;
+import java.math.BigDecimal;
 
 /**
  * 消息消费者
@@ -28,7 +31,17 @@ public class OrderMqConsumer {
     public void createOrderQueue(TextMessage text){
         try {
             //将json转换成对象
-            JSONObject json = JSONObject.parseObject(text.getText());
+            TransactionMessage message = JSON.parseObject(text.getText(), TransactionMessage.class);
+            //消息内容
+            String msg = message.getMessage();
+            JSONObject json = JSONObject.parseObject(msg);
+            //创建订单
+            orderService.createOrder(json.getLong("goodsId"),new BigDecimal(100));
+            boolean result = remoteClient.confirmCustomerMessage(message.getId(),"cloud-transaction-order");
+            if(!result){
+                //确定失败，回滚
+                throw new RuntimeException("确定消息消费失败");
+            }
             //手动确认
             text.acknowledge();
         }catch (Exception e){

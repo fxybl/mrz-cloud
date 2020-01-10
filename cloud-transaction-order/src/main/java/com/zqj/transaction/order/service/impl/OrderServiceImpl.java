@@ -2,7 +2,10 @@ package com.zqj.transaction.order.service.impl;
 
 import com.zqj.transaction.order.mapper.OrderMapper;
 import com.zqj.transaction.order.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 /**
  * @author zqj
@@ -12,5 +15,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderServiceImpl implements OrderService {
 
+    @Autowired
     private OrderMapper orderMapper;
+
+    @Override
+    public void createOrder(long goodsId, BigDecimal money) {
+        orderMapper.addOrder(goodsId,money);
+    }
 }
