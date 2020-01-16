@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zqj.seata.account.mapper.AccountMapper">
     <update id="decrease">
-        update account
-        set `count`=#{param2}
-        where user_id = #{param1}
+        UPDATE account
+        SET residue = residue - #{param2},
+            used    = used + #{param2}
+        where user_id = #{param1};
     </update>
 </mapper>
