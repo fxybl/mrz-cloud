@@ -3,7 +3,9 @@
 <mapper namespace="com.zqj.seata.storage.mapper.StorageMapper">
     <update id="decrease">
         update `storage`
-        set `count`=#{param2}
+        set used    = used + #{param2},
+            residue = residue + #{param2}
         where product_id = #{param1}
+
     </update>
 </mapper>
