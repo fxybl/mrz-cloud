@@ -4,6 +4,7 @@ import com.zqj.seata.storage.mapper.StorageMapper;
 import com.zqj.seata.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author zqj
@@ -16,6 +17,7 @@ public class StorageServiceImpl implements StorageService {
     private StorageMapper storageMapper;
 
     @Override
+    @Transactional
     public void decrease(Long productId, Integer count) {
         storageMapper.decrease(productId,count);
     }
