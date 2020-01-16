@@ -1,5 +1,6 @@
 package com.zqj.seata.storage.controller;
 
+import com.zqj.seata.api.remote.StorageRemote;
 import com.zqj.seata.storage.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,8 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-public class StorageController {
+public class StorageController implements StorageRemote {
 
     @Autowired
     private StorageService storageService;
+
+    @Override
+    public void decrease(Long productId, Integer count) {
+        storageService.decrease(productId,count);
+    }
 }

@@ -14,4 +14,9 @@ public class StorageServiceImpl implements StorageService {
 
     @Autowired
     private StorageMapper storageMapper;
+
+    @Override
+    public void decrease(Long productId, Integer count) {
+        storageMapper.decrease(productId,count);
+    }
 }

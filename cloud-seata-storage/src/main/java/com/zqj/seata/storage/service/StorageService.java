@@ -5,4 +5,10 @@ package com.zqj.seata.storage.service;
  * @create 2020-01-16 10:32
  */
 public interface StorageService {
+    /**
+     * 扣减库存
+     * @param productId
+     * @param count
+     */
+    void decrease(Long productId, Integer count);
 }
