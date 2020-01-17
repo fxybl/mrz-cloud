@@ -3,8 +3,8 @@
 <mapper namespace="com.zqj.seata.account.mapper.AccountMapper">
     <update id="decrease">
         UPDATE account
-        SET residue = residue - #{param2},
-            used    = used + #{param2}
-        where user_id = #{param1};
+        SET residue = residue - #{money},
+            used    = used + #{moeny}
+        where user_id = #{userId};
     </update>
 </mapper>
