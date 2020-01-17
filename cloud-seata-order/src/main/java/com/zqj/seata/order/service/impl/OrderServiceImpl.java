@@ -34,6 +34,7 @@ public class OrderServiceImpl implements OrderService {
         log.info("订单号{}:交易开始",order.getId());
         //RootContext.getXID()如果为空则表示全局事务没有开启
         log.info("全局事务ID:{}", RootContext.getXID());
+        log.info("XID是{}",RootContext.KEY_XID);
         //本地创建订单
         orderMapper.create(order);
         //远程调用，扣减库存
