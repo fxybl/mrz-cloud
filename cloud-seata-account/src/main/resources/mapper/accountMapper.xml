@@ -4,7 +4,7 @@
     <update id="decrease">
         UPDATE account
         SET residue = residue - #{money},
-            used    = used + #{moeny}
+            used    = used + #{money}
         where user_id = #{userId};
     </update>
 </mapper>
