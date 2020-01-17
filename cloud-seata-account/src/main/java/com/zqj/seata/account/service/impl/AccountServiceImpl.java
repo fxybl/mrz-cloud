@@ -22,6 +22,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void decrease(Long userId, BigDecimal money) {
         accountMapper.decrease(userId,money);
-        throw new RuntimeException("");
+        //去掉注释，测试分布式事务
+        //throw new RuntimeException("");
     }
 }
