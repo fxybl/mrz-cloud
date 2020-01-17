@@ -66,9 +66,20 @@
 
         <!--seata-->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
             <artifactId>seata-all</artifactId>
             <groupId>io.seata</groupId>
             <version>${seata.version}</version>
+        </dependency>
+
+        <!--携程配置中心客户端依赖-->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.1.0</version>
         </dependency>
 
         <!--feign-->

@@ -22,13 +22,13 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    @Value("cloud.datasource.storage.url")
+    @Value("${cloud.datasource.storage.url}")
     private String url;
 
-    @Value("cloud.datasource.storage.username")
+    @Value("${cloud.datasource.storage.username}")
     private String username;
 
-    @Value("cloud.datasource.storage.password")
+    @Value("${cloud.datasource.storage.password}")
     private String password;
 
     /**
