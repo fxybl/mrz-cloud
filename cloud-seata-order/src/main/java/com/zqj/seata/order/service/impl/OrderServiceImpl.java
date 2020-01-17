@@ -5,6 +5,7 @@ import com.zqj.seata.api.remote.AccountRemote;
 import com.zqj.seata.api.remote.StorageRemote;
 import com.zqj.seata.order.mapper.OrderMapper;
 import com.zqj.seata.order.service.OrderService;
+import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public void createOrder(Order order) {
         log.info("订单号{}:交易开始",order.getId());
+        //RootContext.getXID()如果为空则表示全局事务没有开启
+        log.info("全局事务ID:{}", RootContext.getXID());
         //本地创建订单
         orderMapper.create(order);
         //远程调用，扣减库存
