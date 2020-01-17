@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  * @create 2020-01-15 16:36
  */
 
-@FeignClient(value = "cloud-seata-account-service", path = "/account")
+@FeignClient(value = "cloud-seata-account-service")
 public interface AccountRemote {
 
     /**
@@ -21,6 +21,6 @@ public interface AccountRemote {
      * @param userId
      * @param money
      */
-    @PostMapping("/decrease")
+    @PostMapping("/account/decrease")
     void decrease(@RequestParam("userId") Long userId,@RequestParam("money") BigDecimal money);
 }

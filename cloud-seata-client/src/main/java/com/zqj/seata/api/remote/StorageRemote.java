@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @create 2020-01-15 16:37
  */
 
-@FeignClient(value = "cloud-seata-storage-service", path = "/storage")
+@FeignClient(value = "cloud-seata-storage-service")
 public interface StorageRemote {
 
     /**
@@ -18,7 +18,7 @@ public interface StorageRemote {
      * @param productId
      * @param count
      */
-    @PostMapping("/decrease")
+    @PostMapping("/storage/decrease")
     void decrease(@RequestParam("productId")Long productId,@RequestParam("count") Integer count);
 
 
