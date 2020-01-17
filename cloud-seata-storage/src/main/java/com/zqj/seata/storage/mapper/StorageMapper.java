@@ -1,5 +1,7 @@
 package com.zqj.seata.storage.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 /**
  * @author zqj
  * @create 2020-01-16 10:30
@@ -10,5 +12,5 @@ public interface StorageMapper {
      * @param productId
      * @param count
      */
-    void decrease(Long productId, Integer count);
+    void decrease(@Param("productId") Long productId, @Param("count") Integer count);
 }
