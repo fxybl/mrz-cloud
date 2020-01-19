@@ -29,7 +29,7 @@ public class MessageController implements TransactionRemoteClient {
      * @return
      */
     @Override
-    public boolean sendMessage(@RequestBody TransactionMessage message) {
+    public Integer sendMessage(@RequestBody TransactionMessage message) {
         return messageService.sendMessage(message);
     }
 

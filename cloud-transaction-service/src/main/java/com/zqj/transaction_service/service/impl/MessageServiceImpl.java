@@ -24,9 +24,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Transactional
     @Override
-    public boolean sendMessage(TransactionMessage message) {
-        mapper.save(message);
-        return true;
+    public Integer sendMessage(TransactionMessage message) {
+        return mapper.save(message);
     }
 
     @Transactional
