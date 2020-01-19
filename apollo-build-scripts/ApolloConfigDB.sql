@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2020-01-17 18:30:30
+Date: 2020-01-19 18:56:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,13 +36,14 @@ CREATE TABLE `App` (
   KEY `AppId` (`AppId`(191)),
   KEY `DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_Name` (`Name`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='应用表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='应用表';
 
 -- ----------------------------
 -- Records of App
 -- ----------------------------
 INSERT INTO `App` VALUES ('1', 'SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com', '\0', 'default', '2020-01-06 17:39:11', '', '2020-01-06 17:39:11');
 INSERT INTO `App` VALUES ('2', 'seata', 'apollo-server', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com', '\0', 'apollo', '2020-01-17 11:28:40', 'apollo', '2020-01-17 11:28:40');
+INSERT INTO `App` VALUES ('3', 'mytx', 'tx-server', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for AppNamespace
@@ -64,13 +65,14 @@ CREATE TABLE `AppNamespace` (
   KEY `IX_AppId` (`AppId`),
   KEY `Name_AppId` (`Name`,`AppId`),
   KEY `DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='应用namespace定义';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='应用namespace定义';
 
 -- ----------------------------
 -- Records of AppNamespace
 -- ----------------------------
 INSERT INTO `AppNamespace` VALUES ('1', 'application', 'SampleApp', 'properties', '\0', 'default app namespace', '\0', '', '2020-01-06 17:39:11', '', '2020-01-06 17:39:11');
 INSERT INTO `AppNamespace` VALUES ('2', 'application', 'seata', 'properties', '\0', 'default app namespace', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `AppNamespace` VALUES ('3', 'application', 'mytx', 'properties', '\0', 'default app namespace', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for Audit
@@ -89,7 +91,7 @@ CREATE TABLE `Audit` (
   `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`Id`),
   KEY `DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COMMENT='日志审计表';
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COMMENT='日志审计表';
 
 -- ----------------------------
 -- Records of Audit
@@ -133,6 +135,28 @@ INSERT INTO `Audit` VALUES ('36', 'Item', '11', 'INSERT', null, '\0', 'apollo', 
 INSERT INTO `Audit` VALUES ('37', 'Item', '12', 'INSERT', null, '\0', 'apollo', '2020-01-17 13:54:57', null, '2020-01-17 13:54:57');
 INSERT INTO `Audit` VALUES ('38', 'Release', '10', 'INSERT', null, '\0', 'apollo', '2020-01-17 13:55:05', null, '2020-01-17 13:55:05');
 INSERT INTO `Audit` VALUES ('39', 'ReleaseHistory', '10', 'INSERT', null, '\0', 'apollo', '2020-01-17 13:55:05', null, '2020-01-17 13:55:05');
+INSERT INTO `Audit` VALUES ('40', 'App', '3', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:15:19', null, '2020-01-19 11:15:19');
+INSERT INTO `Audit` VALUES ('41', 'AppNamespace', '3', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:15:19', null, '2020-01-19 11:15:19');
+INSERT INTO `Audit` VALUES ('42', 'Cluster', '3', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:15:19', null, '2020-01-19 11:15:19');
+INSERT INTO `Audit` VALUES ('43', 'Namespace', '3', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:15:19', null, '2020-01-19 11:15:19');
+INSERT INTO `Audit` VALUES ('44', 'Item', '13', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:16:11', null, '2020-01-19 11:16:11');
+INSERT INTO `Audit` VALUES ('45', 'Item', '14', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:16:51', null, '2020-01-19 11:16:51');
+INSERT INTO `Audit` VALUES ('46', 'Item', '15', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:17:38', null, '2020-01-19 11:17:38');
+INSERT INTO `Audit` VALUES ('47', 'Item', '16', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:18:22', null, '2020-01-19 11:18:22');
+INSERT INTO `Audit` VALUES ('48', 'Release', '11', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:20:31', null, '2020-01-19 11:20:31');
+INSERT INTO `Audit` VALUES ('49', 'ReleaseHistory', '11', 'INSERT', null, '\0', 'apollo', '2020-01-19 11:20:31', null, '2020-01-19 11:20:31');
+INSERT INTO `Audit` VALUES ('50', 'Item', '17', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:08:27', null, '2020-01-19 12:08:27');
+INSERT INTO `Audit` VALUES ('51', 'Release', '12', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:08:33', null, '2020-01-19 12:08:33');
+INSERT INTO `Audit` VALUES ('52', 'ReleaseHistory', '12', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:08:33', null, '2020-01-19 12:08:33');
+INSERT INTO `Audit` VALUES ('53', 'Item', '17', 'DELETE', null, '\0', 'apollo', '2020-01-19 12:12:44', null, '2020-01-19 12:12:44');
+INSERT INTO `Audit` VALUES ('54', 'Release', '13', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:12:49', null, '2020-01-19 12:12:49');
+INSERT INTO `Audit` VALUES ('55', 'ReleaseHistory', '13', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:12:49', null, '2020-01-19 12:12:49');
+INSERT INTO `Audit` VALUES ('56', 'Item', '18', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:13:23', null, '2020-01-19 12:13:23');
+INSERT INTO `Audit` VALUES ('57', 'Release', '14', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:13:27', null, '2020-01-19 12:13:27');
+INSERT INTO `Audit` VALUES ('58', 'ReleaseHistory', '14', 'INSERT', null, '\0', 'apollo', '2020-01-19 12:13:27', null, '2020-01-19 12:13:27');
+INSERT INTO `Audit` VALUES ('59', 'Item', '18', 'UPDATE', null, '\0', 'apollo', '2020-01-19 13:04:15', null, '2020-01-19 13:04:15');
+INSERT INTO `Audit` VALUES ('60', 'Release', '15', 'INSERT', null, '\0', 'apollo', '2020-01-19 13:04:21', null, '2020-01-19 13:04:21');
+INSERT INTO `Audit` VALUES ('61', 'ReleaseHistory', '15', 'INSERT', null, '\0', 'apollo', '2020-01-19 13:04:21', null, '2020-01-19 13:04:21');
 
 -- ----------------------------
 -- Table structure for Cluster
@@ -152,13 +176,14 @@ CREATE TABLE `Cluster` (
   KEY `IX_AppId_Name` (`AppId`,`Name`),
   KEY `IX_ParentClusterId` (`ParentClusterId`),
   KEY `DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='集群';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='集群';
 
 -- ----------------------------
 -- Records of Cluster
 -- ----------------------------
 INSERT INTO `Cluster` VALUES ('1', 'default', 'SampleApp', '0', '\0', '', '2020-01-06 17:39:11', '', '2020-01-06 17:39:11');
 INSERT INTO `Cluster` VALUES ('2', 'default', 'seata', '0', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `Cluster` VALUES ('3', 'default', 'mytx', '0', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for Commit
@@ -181,7 +206,7 @@ CREATE TABLE `Commit` (
   KEY `AppId` (`AppId`(191)),
   KEY `ClusterName` (`ClusterName`(191)),
   KEY `NamespaceName` (`NamespaceName`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COMMENT='commit 历史表';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COMMENT='commit 历史表';
 
 -- ----------------------------
 -- Records of Commit
@@ -203,6 +228,14 @@ INSERT INTO `Commit` VALUES ('14', '{\"createItems\":[{\"namespaceId\":2,\"key\"
 INSERT INTO `Commit` VALUES ('15', '{\"createItems\":[],\"updateItems\":[{\"oldItem\":{\"namespaceId\":2,\"key\":\"cloud.datasource.order.url\",\"value\":\"1\",\"lineNum\":7,\"id\":10,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-17 13:54:02\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-17 13:54:02\"},\"newItem\":{\"namespaceId\":2,\"key\":\"cloud.datasource.order.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/order_seata\",\"comment\":\"\",\"lineNum\":7,\"id\":10,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-17 13:54:02\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-17 13:54:20\"}}],\"deleteItems\":[]}', 'seata', 'default', 'application', null, '\0', 'apollo', '2020-01-17 13:54:21', 'apollo', '2020-01-17 13:54:21');
 INSERT INTO `Commit` VALUES ('16', '{\"createItems\":[{\"namespaceId\":2,\"key\":\"cloud.datasource.order.username\",\"value\":\"root\",\"lineNum\":8,\"id\":11,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-17 13:54:36\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-17 13:54:36\"}],\"updateItems\":[],\"deleteItems\":[]}', 'seata', 'default', 'application', null, '\0', 'apollo', '2020-01-17 13:54:36', 'apollo', '2020-01-17 13:54:36');
 INSERT INTO `Commit` VALUES ('17', '{\"createItems\":[{\"namespaceId\":2,\"key\":\"cloud.datasource.order.password\",\"value\":\"SaaSTest123!\",\"lineNum\":9,\"id\":12,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-17 13:54:57\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-17 13:54:57\"}],\"updateItems\":[],\"deleteItems\":[]}', 'seata', 'default', 'application', null, '\0', 'apollo', '2020-01-17 13:54:57', 'apollo', '2020-01-17 13:54:57');
+INSERT INTO `Commit` VALUES ('18', '{\"createItems\":[{\"namespaceId\":3,\"key\":\"cloud.datasource.username\",\"value\":\"root\",\"lineNum\":1,\"id\":13,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 11:16:11\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 11:16:11\"}],\"updateItems\":[],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 11:16:11', 'apollo', '2020-01-19 11:16:11');
+INSERT INTO `Commit` VALUES ('19', '{\"createItems\":[{\"namespaceId\":3,\"key\":\"cloud.datasource.password\",\"value\":\"SaaSTest123!\",\"lineNum\":2,\"id\":14,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 11:16:50\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 11:16:50\"}],\"updateItems\":[],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 11:16:51', 'apollo', '2020-01-19 11:16:51');
+INSERT INTO `Commit` VALUES ('20', '{\"createItems\":[{\"namespaceId\":3,\"key\":\"cloud.tx.datasource.stock.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/stock\",\"lineNum\":3,\"id\":15,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 11:17:38\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 11:17:38\"}],\"updateItems\":[],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 11:17:38', 'apollo', '2020-01-19 11:17:38');
+INSERT INTO `Commit` VALUES ('21', '{\"createItems\":[{\"namespaceId\":3,\"key\":\"cloud.tx.datasource.order.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/order\",\"lineNum\":4,\"id\":16,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 11:18:22\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 11:18:22\"}],\"updateItems\":[],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 11:18:22', 'apollo', '2020-01-19 11:18:22');
+INSERT INTO `Commit` VALUES ('22', '{\"createItems\":[{\"namespaceId\":3,\"key\":\"cloud.datasource.message.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/tc\",\"lineNum\":5,\"id\":17,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 12:08:26\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 12:08:26\"}],\"updateItems\":[],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 12:08:27', 'apollo', '2020-01-19 12:08:27');
+INSERT INTO `Commit` VALUES ('23', '{\"createItems\":[],\"updateItems\":[],\"deleteItems\":[{\"namespaceId\":3,\"key\":\"cloud.datasource.message.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/tc\",\"lineNum\":5,\"id\":17,\"isDeleted\":true,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 12:08:27\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 12:12:44\"}]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 12:12:44', 'apollo', '2020-01-19 12:12:44');
+INSERT INTO `Commit` VALUES ('24', '{\"createItems\":[{\"namespaceId\":3,\"key\":\"cloud.tx.datasource.message.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/tx\",\"lineNum\":5,\"id\":18,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 12:13:22\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 12:13:22\"}],\"updateItems\":[],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 12:13:23', 'apollo', '2020-01-19 12:13:23');
+INSERT INTO `Commit` VALUES ('25', '{\"createItems\":[],\"updateItems\":[{\"oldItem\":{\"namespaceId\":3,\"key\":\"cloud.tx.datasource.message.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/tx\",\"lineNum\":5,\"id\":18,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 12:13:23\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 12:13:23\"},\"newItem\":{\"namespaceId\":3,\"key\":\"cloud.tx.datasource.message.url\",\"value\":\"jdbc:mysql://192.168.0.18:3306/tc\",\"comment\":\"\",\"lineNum\":5,\"id\":18,\"isDeleted\":false,\"dataChangeCreatedBy\":\"apollo\",\"dataChangeCreatedTime\":\"2020-01-19 12:13:23\",\"dataChangeLastModifiedBy\":\"apollo\",\"dataChangeLastModifiedTime\":\"2020-01-19 13:04:15\"}}],\"deleteItems\":[]}', 'mytx', 'default', 'application', null, '\0', 'apollo', '2020-01-19 13:04:16', 'apollo', '2020-01-19 13:04:16');
 
 -- ----------------------------
 -- Table structure for GrayReleaseRule
@@ -247,13 +280,14 @@ CREATE TABLE `Instance` (
   UNIQUE KEY `IX_UNIQUE_KEY` (`AppId`,`ClusterName`,`Ip`,`DataCenter`),
   KEY `IX_IP` (`Ip`),
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='使用配置的应用实例';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='使用配置的应用实例';
 
 -- ----------------------------
 -- Records of Instance
 -- ----------------------------
 INSERT INTO `Instance` VALUES ('1', 'SampleApp', 'default', '', '10.0.75.1', '2020-01-07 10:08:50', '2020-01-07 10:08:50');
 INSERT INTO `Instance` VALUES ('2', 'seata', 'default', '', '10.0.75.1', '2020-01-17 12:00:42', '2020-01-17 12:00:42');
+INSERT INTO `Instance` VALUES ('3', 'mytx', 'default', '', '10.0.75.1', '2020-01-19 11:27:30', '2020-01-19 11:27:30');
 
 -- ----------------------------
 -- Table structure for InstanceConfig
@@ -274,13 +308,14 @@ CREATE TABLE `InstanceConfig` (
   KEY `IX_ReleaseKey` (`ReleaseKey`),
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_Valid_Namespace` (`ConfigAppId`,`ConfigClusterName`,`ConfigNamespaceName`,`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='应用实例的配置信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='应用实例的配置信息';
 
 -- ----------------------------
 -- Records of InstanceConfig
 -- ----------------------------
 INSERT INTO `InstanceConfig` VALUES ('1', '1', 'SampleApp', 'default', 'application', '20200107103622-1dc5d3c90b52d186', '2020-01-07 10:36:22', '2020-01-07 10:08:49', '2020-01-08 10:26:27');
 INSERT INTO `InstanceConfig` VALUES ('2', '2', 'seata', 'default', 'application', '20200117135505-8f8a7d158c30ab31', '2020-01-17 13:55:05', '2020-01-17 12:00:41', '2020-01-17 13:55:06');
+INSERT INTO `InstanceConfig` VALUES ('3', '3', 'mytx', 'default', 'application', '20200119130420-40beccb57eb13077', '2020-01-19 13:04:21', '2020-01-19 11:27:30', '2020-01-19 13:04:22');
 
 -- ----------------------------
 -- Table structure for Item
@@ -301,7 +336,7 @@ CREATE TABLE `Item` (
   PRIMARY KEY (`Id`),
   KEY `IX_GroupId` (`NamespaceId`),
   KEY `DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='配置项目';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COMMENT='配置项目';
 
 -- ----------------------------
 -- Records of Item
@@ -318,6 +353,12 @@ INSERT INTO `Item` VALUES ('9', '2', 'cloud.datasource.storage.password', 'SaaST
 INSERT INTO `Item` VALUES ('10', '2', 'cloud.datasource.order.url', 'jdbc:mysql://192.168.0.18:3306/order_seata', '', '7', '\0', 'apollo', '2020-01-17 13:54:02', 'apollo', '2020-01-17 13:54:21');
 INSERT INTO `Item` VALUES ('11', '2', 'cloud.datasource.order.username', 'root', null, '8', '\0', 'apollo', '2020-01-17 13:54:36', 'apollo', '2020-01-17 13:54:36');
 INSERT INTO `Item` VALUES ('12', '2', 'cloud.datasource.order.password', 'SaaSTest123!', null, '9', '\0', 'apollo', '2020-01-17 13:54:57', 'apollo', '2020-01-17 13:54:57');
+INSERT INTO `Item` VALUES ('13', '3', 'cloud.datasource.username', 'root', null, '1', '\0', 'apollo', '2020-01-19 11:16:11', 'apollo', '2020-01-19 11:16:11');
+INSERT INTO `Item` VALUES ('14', '3', 'cloud.datasource.password', 'SaaSTest123!', null, '2', '\0', 'apollo', '2020-01-19 11:16:51', 'apollo', '2020-01-19 11:16:51');
+INSERT INTO `Item` VALUES ('15', '3', 'cloud.tx.datasource.stock.url', 'jdbc:mysql://192.168.0.18:3306/stock', null, '3', '\0', 'apollo', '2020-01-19 11:17:38', 'apollo', '2020-01-19 11:17:38');
+INSERT INTO `Item` VALUES ('16', '3', 'cloud.tx.datasource.order.url', 'jdbc:mysql://192.168.0.18:3306/order', null, '4', '\0', 'apollo', '2020-01-19 11:18:22', 'apollo', '2020-01-19 11:18:22');
+INSERT INTO `Item` VALUES ('17', '3', 'cloud.datasource.message.url', 'jdbc:mysql://192.168.0.18:3306/tc', null, '5', '', 'apollo', '2020-01-19 12:08:27', 'apollo', '2020-01-19 12:12:44');
+INSERT INTO `Item` VALUES ('18', '3', 'cloud.tx.datasource.message.url', 'jdbc:mysql://192.168.0.18:3306/tc', '', '5', '\0', 'apollo', '2020-01-19 12:13:23', 'apollo', '2020-01-19 13:04:15');
 
 -- ----------------------------
 -- Table structure for Namespace
@@ -337,13 +378,14 @@ CREATE TABLE `Namespace` (
   KEY `AppId_ClusterName_NamespaceName` (`AppId`(191),`ClusterName`(191),`NamespaceName`(191)),
   KEY `DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_NamespaceName` (`NamespaceName`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='命名空间';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='命名空间';
 
 -- ----------------------------
 -- Records of Namespace
 -- ----------------------------
 INSERT INTO `Namespace` VALUES ('1', 'SampleApp', 'default', 'application', '\0', 'default', '2020-01-06 17:39:11', '', '2020-01-06 17:39:11');
 INSERT INTO `Namespace` VALUES ('2', 'seata', 'default', 'application', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `Namespace` VALUES ('3', 'mytx', 'default', 'application', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for NamespaceLock
@@ -389,7 +431,7 @@ CREATE TABLE `Release` (
   KEY `AppId_ClusterName_GroupName` (`AppId`(191),`ClusterName`(191),`NamespaceName`(191)),
   KEY `DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_ReleaseKey` (`ReleaseKey`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='发布';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='发布';
 
 -- ----------------------------
 -- Records of Release
@@ -404,6 +446,11 @@ INSERT INTO `Release` VALUES ('7', '20200107103622-1dc5d3c90b52d186', '202001071
 INSERT INTO `Release` VALUES ('8', '20200117120040-8f8a7d158c30ab2f', '20200117120020-release', 'account数据库', 'seata', 'default', 'application', '{\"cloud.datasource.account.password\":\"SaaSTest123!\",\"cloud.datasource.account.username\":\"root\",\"cloud.datasource.account.url\":\"jdbc:mysql://192.168.0.18:3306/account_seata\"}', '\0', '\0', 'apollo', '2020-01-17 12:00:41', 'apollo', '2020-01-17 12:00:41');
 INSERT INTO `Release` VALUES ('9', '20200117135122-8f8a7d158c30ab30', '20200117135113-release', 'storage数据库', 'seata', 'default', 'application', '{\"cloud.datasource.account.password\":\"SaaSTest123!\",\"cloud.datasource.storage.url\":\"jdbc:mysql://192.168.0.18:3306/storage_seata\",\"cloud.datasource.storage.username\":\"root\",\"cloud.datasource.account.username\":\"root\",\"cloud.datasource.account.url\":\"jdbc:mysql://192.168.0.18:3306/account_seata\",\"cloud.datasource.storage.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-17 13:51:23', 'apollo', '2020-01-17 13:51:23');
 INSERT INTO `Release` VALUES ('10', '20200117135505-8f8a7d158c30ab31', '20200117135459-release', 'order数据库', 'seata', 'default', 'application', '{\"cloud.datasource.order.password\":\"SaaSTest123!\",\"cloud.datasource.account.password\":\"SaaSTest123!\",\"cloud.datasource.storage.url\":\"jdbc:mysql://192.168.0.18:3306/storage_seata\",\"cloud.datasource.storage.username\":\"root\",\"cloud.datasource.account.username\":\"root\",\"cloud.datasource.order.username\":\"root\",\"cloud.datasource.account.url\":\"jdbc:mysql://192.168.0.18:3306/account_seata\",\"cloud.datasource.order.url\":\"jdbc:mysql://192.168.0.18:3306/order_seata\",\"cloud.datasource.storage.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-17 13:55:05', 'apollo', '2020-01-17 13:55:05');
+INSERT INTO `Release` VALUES ('11', '20200119112030-40beccb57eb13073', '20200119112027-release', '', 'mytx', 'default', 'application', '{\"cloud.datasource.username\":\"root\",\"cloud.tx.datasource.stock.url\":\"jdbc:mysql://192.168.0.18:3306/stock\",\"cloud.tx.datasource.order.url\":\"jdbc:mysql://192.168.0.18:3306/order\",\"cloud.datasource.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-19 11:20:31', 'apollo', '2020-01-19 11:20:31');
+INSERT INTO `Release` VALUES ('12', '20200119120832-40beccb57eb13074', '20200119120828-release', '', 'mytx', 'default', 'application', '{\"cloud.datasource.message.url\":\"jdbc:mysql://192.168.0.18:3306/tc\",\"cloud.datasource.username\":\"root\",\"cloud.tx.datasource.stock.url\":\"jdbc:mysql://192.168.0.18:3306/stock\",\"cloud.tx.datasource.order.url\":\"jdbc:mysql://192.168.0.18:3306/order\",\"cloud.datasource.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-19 12:08:33', 'apollo', '2020-01-19 12:08:33');
+INSERT INTO `Release` VALUES ('13', '20200119121248-40beccb57eb13075', '20200119121246-release', '', 'mytx', 'default', 'application', '{\"cloud.datasource.username\":\"root\",\"cloud.tx.datasource.stock.url\":\"jdbc:mysql://192.168.0.18:3306/stock\",\"cloud.tx.datasource.order.url\":\"jdbc:mysql://192.168.0.18:3306/order\",\"cloud.datasource.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-19 12:12:49', 'apollo', '2020-01-19 12:12:49');
+INSERT INTO `Release` VALUES ('14', '20200119121327-40beccb57eb13076', '20200119121325-release', '', 'mytx', 'default', 'application', '{\"cloud.datasource.username\":\"root\",\"cloud.tx.datasource.stock.url\":\"jdbc:mysql://192.168.0.18:3306/stock\",\"cloud.tx.datasource.message.url\":\"jdbc:mysql://192.168.0.18:3306/tx\",\"cloud.tx.datasource.order.url\":\"jdbc:mysql://192.168.0.18:3306/order\",\"cloud.datasource.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-19 12:13:27', 'apollo', '2020-01-19 12:13:27');
+INSERT INTO `Release` VALUES ('15', '20200119130420-40beccb57eb13077', '20200119130418-release', '', 'mytx', 'default', 'application', '{\"cloud.datasource.username\":\"root\",\"cloud.tx.datasource.stock.url\":\"jdbc:mysql://192.168.0.18:3306/stock\",\"cloud.tx.datasource.message.url\":\"jdbc:mysql://192.168.0.18:3306/tc\",\"cloud.tx.datasource.order.url\":\"jdbc:mysql://192.168.0.18:3306/order\",\"cloud.datasource.password\":\"SaaSTest123!\"}', '\0', '\0', 'apollo', '2020-01-19 13:04:21', 'apollo', '2020-01-19 13:04:21');
 
 -- ----------------------------
 -- Table structure for ReleaseHistory
@@ -428,7 +475,7 @@ CREATE TABLE `ReleaseHistory` (
   KEY `IX_Namespace` (`AppId`,`ClusterName`,`NamespaceName`,`BranchName`),
   KEY `IX_ReleaseId` (`ReleaseId`),
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COMMENT='发布历史';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='发布历史';
 
 -- ----------------------------
 -- Records of ReleaseHistory
@@ -443,6 +490,11 @@ INSERT INTO `ReleaseHistory` VALUES ('7', 'SampleApp', 'default', 'application',
 INSERT INTO `ReleaseHistory` VALUES ('8', 'seata', 'default', 'application', 'default', '8', '0', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-17 12:00:41', 'apollo', '2020-01-17 12:00:41');
 INSERT INTO `ReleaseHistory` VALUES ('9', 'seata', 'default', 'application', 'default', '9', '8', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-17 13:51:23', 'apollo', '2020-01-17 13:51:23');
 INSERT INTO `ReleaseHistory` VALUES ('10', 'seata', 'default', 'application', 'default', '10', '9', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-17 13:55:05', 'apollo', '2020-01-17 13:55:05');
+INSERT INTO `ReleaseHistory` VALUES ('11', 'mytx', 'default', 'application', 'default', '11', '0', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-19 11:20:31', 'apollo', '2020-01-19 11:20:31');
+INSERT INTO `ReleaseHistory` VALUES ('12', 'mytx', 'default', 'application', 'default', '12', '11', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-19 12:08:33', 'apollo', '2020-01-19 12:08:33');
+INSERT INTO `ReleaseHistory` VALUES ('13', 'mytx', 'default', 'application', 'default', '13', '12', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-19 12:12:49', 'apollo', '2020-01-19 12:12:49');
+INSERT INTO `ReleaseHistory` VALUES ('14', 'mytx', 'default', 'application', 'default', '14', '13', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-19 12:13:27', 'apollo', '2020-01-19 12:13:27');
+INSERT INTO `ReleaseHistory` VALUES ('15', 'mytx', 'default', 'application', 'default', '15', '14', '0', '{\"isEmergencyPublish\":false}', '\0', 'apollo', '2020-01-19 13:04:21', 'apollo', '2020-01-19 13:04:21');
 
 -- ----------------------------
 -- Table structure for ReleaseMessage
@@ -455,13 +507,14 @@ CREATE TABLE `ReleaseMessage` (
   PRIMARY KEY (`Id`),
   KEY `DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_Message` (`Message`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='发布消息';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COMMENT='发布消息';
 
 -- ----------------------------
 -- Records of ReleaseMessage
 -- ----------------------------
 INSERT INTO `ReleaseMessage` VALUES ('6', 'SampleApp+default+application', '2020-01-07 10:36:22');
 INSERT INTO `ReleaseMessage` VALUES ('9', 'seata+default+application', '2020-01-17 13:55:05');
+INSERT INTO `ReleaseMessage` VALUES ('14', 'mytx+default+application', '2020-01-19 13:04:21');
 
 -- ----------------------------
 -- Table structure for ServerConfig

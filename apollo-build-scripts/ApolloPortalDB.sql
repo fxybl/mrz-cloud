@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2020-01-17 18:30:43
+Date: 2020-01-19 18:56:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,13 +36,14 @@ CREATE TABLE `App` (
   KEY `AppId` (`AppId`(191)),
   KEY `DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_Name` (`Name`(191))
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='应用表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='应用表';
 
 -- ----------------------------
 -- Records of App
 -- ----------------------------
 INSERT INTO `App` VALUES ('1', 'SampleApp', 'Sample App', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com', '\0', 'default', '2020-01-06 17:39:23', '', '2020-01-06 17:39:23');
 INSERT INTO `App` VALUES ('2', 'seata', 'apollo-server', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com', '\0', 'apollo', '2020-01-17 11:28:40', 'apollo', '2020-01-17 11:28:40');
+INSERT INTO `App` VALUES ('3', 'mytx', 'tx-server', 'TEST1', '样例部门1', 'apollo', 'apollo@acme.com', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for AppNamespace
@@ -64,13 +65,14 @@ CREATE TABLE `AppNamespace` (
   KEY `IX_AppId` (`AppId`),
   KEY `Name_AppId` (`Name`,`AppId`),
   KEY `DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='应用namespace定义';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='应用namespace定义';
 
 -- ----------------------------
 -- Records of AppNamespace
 -- ----------------------------
 INSERT INTO `AppNamespace` VALUES ('1', 'application', 'SampleApp', 'properties', '\0', 'default app namespace', '\0', '', '2020-01-06 17:39:23', '', '2020-01-06 17:39:23');
 INSERT INTO `AppNamespace` VALUES ('2', 'application', 'seata', 'properties', '\0', 'default app namespace', '\0', 'apollo', '2020-01-17 11:28:40', 'apollo', '2020-01-17 11:28:40');
+INSERT INTO `AppNamespace` VALUES ('3', 'application', 'mytx', 'properties', '\0', 'default app namespace', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for Authorities
@@ -220,7 +222,7 @@ CREATE TABLE `Permission` (
   PRIMARY KEY (`Id`),
   KEY `IX_TargetId_PermissionType` (`TargetId`(191),`PermissionType`),
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='permission表';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COMMENT='permission表';
 
 -- ----------------------------
 -- Records of Permission
@@ -241,6 +243,14 @@ INSERT INTO `Permission` VALUES ('13', 'ModifyNamespace', 'seata+application', '
 INSERT INTO `Permission` VALUES ('14', 'ReleaseNamespace', 'seata+application', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `Permission` VALUES ('15', 'ModifyNamespace', 'seata+application+DEV', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `Permission` VALUES ('16', 'ReleaseNamespace', 'seata+application+DEV', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `Permission` VALUES ('17', 'CreateCluster', 'mytx', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('18', 'CreateNamespace', 'mytx', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('19', 'AssignRole', 'mytx', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('20', 'ManageAppMaster', 'mytx', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('21', 'ModifyNamespace', 'mytx+application', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('22', 'ReleaseNamespace', 'mytx+application', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('23', 'ModifyNamespace', 'mytx+application+DEV', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Permission` VALUES ('24', 'ReleaseNamespace', 'mytx+application+DEV', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for Role
@@ -257,7 +267,7 @@ CREATE TABLE `Role` (
   PRIMARY KEY (`Id`),
   KEY `IX_RoleName` (`RoleName`(191)),
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
 
 -- ----------------------------
 -- Records of Role
@@ -274,6 +284,12 @@ INSERT INTO `Role` VALUES ('9', 'ModifyNamespace+seata+application', '\0', 'apol
 INSERT INTO `Role` VALUES ('10', 'ReleaseNamespace+seata+application', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `Role` VALUES ('11', 'ModifyNamespace+seata+application+DEV', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `Role` VALUES ('12', 'ReleaseNamespace+seata+application+DEV', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `Role` VALUES ('13', 'Master+mytx', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Role` VALUES ('14', 'ManageAppMaster+mytx', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Role` VALUES ('15', 'ModifyNamespace+mytx+application', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Role` VALUES ('16', 'ReleaseNamespace+mytx+application', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Role` VALUES ('17', 'ModifyNamespace+mytx+application+DEV', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `Role` VALUES ('18', 'ReleaseNamespace+mytx+application+DEV', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for RolePermission
@@ -292,7 +308,7 @@ CREATE TABLE `RolePermission` (
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_RoleId` (`RoleId`),
   KEY `IX_PermissionId` (`PermissionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='角色和权限的绑定表';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COMMENT='角色和权限的绑定表';
 
 -- ----------------------------
 -- Records of RolePermission
@@ -313,6 +329,14 @@ INSERT INTO `RolePermission` VALUES ('13', '9', '13', '\0', 'apollo', '2020-01-1
 INSERT INTO `RolePermission` VALUES ('14', '10', '14', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `RolePermission` VALUES ('15', '11', '15', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `RolePermission` VALUES ('16', '12', '16', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `RolePermission` VALUES ('17', '13', '17', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('18', '13', '18', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('19', '13', '19', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('20', '14', '20', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('21', '15', '21', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('22', '16', '22', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('23', '17', '23', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `RolePermission` VALUES ('24', '18', '24', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for ServerConfig
@@ -361,7 +385,7 @@ CREATE TABLE `UserRole` (
   KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
   KEY `IX_RoleId` (`RoleId`),
   KEY `IX_UserId_RoleId` (`UserId`,`RoleId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COMMENT='用户和role的绑定表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='用户和role的绑定表';
 
 -- ----------------------------
 -- Records of UserRole
@@ -372,6 +396,9 @@ INSERT INTO `UserRole` VALUES ('3', 'apollo', '3', '\0', '', '2020-01-06 17:39:2
 INSERT INTO `UserRole` VALUES ('4', 'apollo', '7', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `UserRole` VALUES ('5', 'apollo', '9', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
 INSERT INTO `UserRole` VALUES ('6', 'apollo', '10', '\0', 'apollo', '2020-01-17 11:28:41', 'apollo', '2020-01-17 11:28:41');
+INSERT INTO `UserRole` VALUES ('7', 'apollo', '13', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `UserRole` VALUES ('8', 'apollo', '15', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
+INSERT INTO `UserRole` VALUES ('9', 'apollo', '16', '\0', 'apollo', '2020-01-19 11:15:19', 'apollo', '2020-01-19 11:15:19');
 
 -- ----------------------------
 -- Table structure for Users
