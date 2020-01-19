@@ -1,5 +1,6 @@
 package com.zqj.transaction_task;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zqj.transaction.message.TransactionRemoteClient;
 import com.zqj.transaction.pojo.TransactionMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -113,7 +114,9 @@ public class ProcessMessageTask {
         }
         if (currentTime - sendTime > 60000) {
             log.info("开始发送消息{}", message.getId());
-            producer.send(message.getQueue(), message.getMessage());
+            JSONObject json = JSONObject.parseObject(message.getMessage());
+            json.put("messageId",message.getId());
+            producer.send(message.getQueue(), json.toString());
             //增加发送次数
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String sendDate = format.format(new Date());
