@@ -116,7 +116,7 @@ public class ProcessMessageTask {
             log.info("开始发送消息{}", message.getId());
             JSONObject json = JSONObject.parseObject(message.getMessage());
             json.put("messageId",message.getId());
-            producer.send(message.getQueue(), json.toString());
+            producer.send(message.getQueue(), json.toJSONString());
             //增加发送次数
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String sendDate = format.format(new Date());
