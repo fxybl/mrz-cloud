@@ -23,6 +23,11 @@ public class MessageController implements TransactionRemoteClient {
     @Autowired
     private MessageService messageService;
 
+    /**
+     *  这里如果不加@RequestBody会导致TransactionMessage接受不到数据
+     * @param message
+     * @return
+     */
     @Override
     public boolean sendMessage(@RequestBody TransactionMessage message) {
         return messageService.sendMessage(message);
