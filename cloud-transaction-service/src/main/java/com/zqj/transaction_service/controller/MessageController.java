@@ -55,7 +55,7 @@ public class MessageController implements TransactionRemoteClient {
 
     @Override
     public boolean confirmDieMessage(Long messageId) {
-        return messageService.updateStatus(messageId, MessageEnum.DIE.getStatus());
+        return messageService.confirmDieMessage(messageId, MessageEnum.DIE.getStatus());
     }
 
     @Override

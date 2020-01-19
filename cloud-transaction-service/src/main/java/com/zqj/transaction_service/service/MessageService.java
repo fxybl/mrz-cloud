@@ -16,8 +16,6 @@ public interface MessageService {
 
     boolean sendMessage(List<TransactionMessage> messages);
 
-    boolean updateStatus(Long messageId, int status);
-
     boolean retrySendDieMessage();
 
     boolean incrSendCount(Long messageId, String sendDate);
@@ -27,4 +25,6 @@ public interface MessageService {
     List<TransactionMessage> queryByWaitingMessage(int limit);
 
     boolean confirmCustomerMessage(Long messageId, int status,String consumerSystem);
+
+    boolean confirmDieMessage(Long messageId, int status);
 }

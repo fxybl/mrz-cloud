@@ -19,15 +19,22 @@
             #{msg.dieCount}, #{msg.customerDate}, #{msg.customerSystem}, #{msg.dieDate})
         </foreach>
     </insert>
-    <update id="updateStatus">
+
+    <update id="confirmCustomerMessage">
         update transaction_message
         set customer_date=now(),
+        send_date=now(),
+        `status`=#{status},
+        customer_system=#{consumerSystem}
+        where id = #{messageId}
+    </update>
+
+    <update id="confirmDieMessage">
+        update transaction_message
+        set die_date=now(),
             send_date=now(),
-            `status`=#{param2}
-            <if test="param3 !=null">
-                ,customer_system=#{param3}
-            </if>
-        where id = #{param1}
+            `status`=#{status}
+        where id = #{messageId}
     </update>
 
     <update id="retrySendDieMessage">

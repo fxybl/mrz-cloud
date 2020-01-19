@@ -1,6 +1,7 @@
 package com.zqj.transaction_service.mapper;
 
 import com.zqj.transaction.pojo.TransactionMessage;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,8 +15,6 @@ public interface TransactionMessageMapper {
 
     void saveBatch(List<TransactionMessage> messages);
 
-    void updateStatus(Long messageId, int status,String consumerSystem);
-
     void retrySendDieMessage();
 
     TransactionMessage queryMessage(Long messageId);
@@ -25,4 +24,8 @@ public interface TransactionMessageMapper {
     List<TransactionMessage> queryMessages(int status);
 
     List<TransactionMessage> queryMessagesLimit(int limit);
+
+    void confirmCustomerMessage(@Param("messageId") Long messageId,@Param("status") int status, @Param("consumerSystem") String consumerSystem);
+
+    void confirmDieMessage(@Param("messageId") Long messageId, @Param("status") int status);
 }

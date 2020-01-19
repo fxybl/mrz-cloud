@@ -36,11 +36,6 @@ public class MessageServiceImpl implements MessageService {
         return true;
     }
 
-    @Override
-    public boolean updateStatus(Long messageId, int status) {
-        mapper.updateStatus(messageId,status,null);
-        return true;
-    }
 
     @Transactional
     @Override
@@ -71,7 +66,14 @@ public class MessageServiceImpl implements MessageService {
     @Transactional
     @Override
     public boolean confirmCustomerMessage(Long messageId, int status, String consumerSystem) {
-        mapper.updateStatus(messageId,status,consumerSystem);
+        mapper.confirmCustomerMessage(messageId,status,consumerSystem);
+        return true;
+    }
+
+    @Transactional
+    @Override
+    public boolean confirmDieMessage(Long messageId, int status) {
+        mapper.confirmDieMessage(messageId,status);
         return true;
     }
 }
