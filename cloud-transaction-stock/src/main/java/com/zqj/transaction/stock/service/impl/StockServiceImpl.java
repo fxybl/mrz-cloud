@@ -40,8 +40,8 @@ public class StockServiceImpl implements StockService {
         json.put("goodsId",stock.getGoodsId());
         message.setMessage(json.toJSONString());
         //加入了hystrix熔断器，抛出异常超时都会返回false
-        Integer result = remoteClient.sendMessage(message);
-        if(result==null){
+        boolean result = remoteClient.sendMessage(message);
+        if(!result){
             //回滚
             throw new RuntimeException("失败，回滚");
         }
