@@ -3,18 +3,18 @@
 <mapper namespace="com.zqj.transaction_service.mapper.TransactionMessageMapper">
 
     <insert id="save" parameterType="com.zqj.transaction.pojo.TransactionMessage">
-        insert into transaction_message(id, message, queue, send_system, send_count, create_date, send_date, status,
+        insert into transaction_message( message, queue, send_system, send_count, create_date, send_date, status,
                                         die_count, customer_date, customer_system, die_date)
-        values (#{id}, #{message}, #{queue}, #{sendSystem}, #{sendCount}, #{createDate}, #{sendDate}, #{status},
+        values ( #{message}, #{queue}, #{sendSystem}, #{sendCount}, #{createDate}, #{sendDate}, #{status},
                 #{dieCount}, #{customerDate}, #{customerSystem}, #{dieDate})
     </insert>
 
     <insert id="saveBatch" parameterType="com.zqj.transaction.pojo.TransactionMessage">
-        insert into transaction_message(id, message, queue, send_system, send_count, create_date, send_date, status,
+        insert into transaction_message( message, queue, send_system, send_count, create_date, send_date, status,
         die_count, customer_date, customer_system, die_date)
         values
         <foreach collection="list" item="msg" index="index" separator=",">
-            (#{msg.id}, #{msg.message}, #{msg.queue}, #{msg.sendSystem}, #{msg.sendCount}, #{msg.createDate},
+            ( #{msg.message}, #{msg.queue}, #{msg.sendSystem}, #{msg.sendCount}, #{msg.createDate},
             #{msg.sendDate}, #{msg.status},
             #{msg.dieCount}, #{msg.customerDate}, #{msg.customerSystem}, #{msg.dieDate})
         </foreach>
