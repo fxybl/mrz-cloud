@@ -5,6 +5,7 @@ import com.zqj.transaction.pojo.TransactionMessage;
 import com.zqj.transaction_service.enums.MessageEnum;
 import com.zqj.transaction_service.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,12 +24,12 @@ public class MessageController implements TransactionRemoteClient {
     private MessageService messageService;
 
     @Override
-    public boolean sendMessage(TransactionMessage message) {
+    public boolean sendMessage(@RequestBody TransactionMessage message) {
         return messageService.sendMessage(message);
     }
 
     @Override
-    public boolean sendMessages(List<TransactionMessage> messages) {
+    public boolean sendMessages(@RequestBody List<TransactionMessage> messages) {
         return messageService.sendMessage(messages);
     }
 
