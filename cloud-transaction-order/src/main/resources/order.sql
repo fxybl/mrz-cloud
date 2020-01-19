@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2020-01-10 14:57:04
+Date: 2020-01-19 18:56:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,8 +24,9 @@ CREATE TABLE `order` (
   `goods_id` bigint(20) DEFAULT NULL COMMENT '商品ID',
   `money` decimal(10,0) DEFAULT NULL COMMENT '订单金额',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of order
 -- ----------------------------
+INSERT INTO `order` VALUES ('1', '10086', '100');
