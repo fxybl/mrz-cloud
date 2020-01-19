@@ -3,7 +3,7 @@
 <mapper namespace="com.zqj.transaction.order.mapper.OrderMapper">
 
 <insert id="addOrder">
-    insert into `order`(goodsId,money)
+    insert into `order`(goods_id,money)
     values (#{goodsId},#{money})
 
 </insert>
