@@ -17,18 +17,19 @@ import java.util.List;
  */
 
 @Service
-@Transactional
 public class MessageServiceImpl implements MessageService {
 
     @Autowired
     private TransactionMessageMapper mapper;
 
+    @Transactional
     @Override
     public boolean sendMessage(TransactionMessage message) {
         mapper.save(message);
         return true;
     }
 
+    @Transactional
     @Override
     public boolean sendMessage(List<TransactionMessage> messages) {
         mapper.saveBatch(messages);
@@ -41,12 +42,14 @@ public class MessageServiceImpl implements MessageService {
         return true;
     }
 
+    @Transactional
     @Override
     public boolean retrySendDieMessage() {
         mapper.retrySendDieMessage();
         return true;
     }
 
+    @Transactional
     @Override
     public boolean incrSendCount(Long messageId, String sendDate) {
         TransactionMessage message = mapper.queryMessage(messageId);
@@ -65,6 +68,7 @@ public class MessageServiceImpl implements MessageService {
         return mapper.queryMessagesLimit(limit);
     }
 
+    @Transactional
     @Override
     public boolean confirmCustomerMessage(Long messageId, int status, String consumerSystem) {
         mapper.updateStatus(messageId,status,consumerSystem);

@@ -1,6 +1,5 @@
 package com.zqj.transaction_service.mapper;
 
-import com.github.pagehelper.Page;
 import com.zqj.transaction.pojo.TransactionMessage;
 
 import java.util.List;
