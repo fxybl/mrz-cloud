@@ -12,7 +12,7 @@ import java.util.List;
 public interface MessageService {
 
 
-    Integer sendMessage(TransactionMessage message);
+    boolean sendMessage(TransactionMessage message);
 
     boolean sendMessage(List<TransactionMessage> messages);
 

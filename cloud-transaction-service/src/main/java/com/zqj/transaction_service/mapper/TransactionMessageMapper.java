@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface TransactionMessageMapper {
 
-    Integer save(TransactionMessage message);
+    void save(TransactionMessage message);
 
     void saveBatch(List<TransactionMessage> messages);
 
