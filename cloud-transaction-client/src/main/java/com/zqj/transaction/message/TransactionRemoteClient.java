@@ -12,7 +12,7 @@ import java.util.List;
  * @author zqj
  * @create 2020-01-09 9:30
  */
-@FeignClient(value = "cloud-transaction-service", path = "/message", fallback = TransactionRemoteClientHystrix.class)
+@FeignClient(value = "cloud-transaction-service", fallback = TransactionRemoteClientHystrix.class)
 public interface TransactionRemoteClient {
 
     /**
@@ -20,7 +20,7 @@ public interface TransactionRemoteClient {
      * @param message
      * @return
      */
-    @PostMapping("/send")
+    @PostMapping("/message/send")
     boolean sendMessage(@RequestBody TransactionMessage message);
 
 
@@ -30,7 +30,7 @@ public interface TransactionRemoteClient {
      * @param messages
      * @return
      */
-    @PostMapping("/sends")
+    @PostMapping("/message/sends")
     boolean sendMessages(@RequestBody List<TransactionMessage> messages);
 
 
@@ -41,7 +41,7 @@ public interface TransactionRemoteClient {
      * @param sendDate
      * @return
      */
-    @PostMapping("/incrSendCount")
+    @PostMapping("/message/incrSendCount")
     boolean incrSendCount(@RequestParam("messageId") Long messageId, @RequestParam("sendDate") String sendDate);
 
 
@@ -51,7 +51,7 @@ public interface TransactionRemoteClient {
      * @param messageId
      * @return
      */
-    @PostMapping("/confirmDieMessage")
+    @PostMapping("/message/confirmDieMessage")
     boolean confirmDieMessage(@RequestParam("messageId") Long messageId);
 
 
@@ -62,7 +62,7 @@ public interface TransactionRemoteClient {
      * @param consumerSystem
      * @return
      */
-    @PostMapping("/confirmCustomerMessage")
+    @PostMapping("/message/confirmCustomerMessage")
     boolean confirmCustomerMessage(@RequestParam("messageId") Long messageId,@RequestParam("consumerSystem") String consumerSystem);
 
 
@@ -72,7 +72,7 @@ public interface TransactionRemoteClient {
      * @param limit
      * @return
      */
-    @GetMapping("/queryByWaitingMessage")
+    @GetMapping("/message/queryByWaitingMessage")
     List<TransactionMessage> queryByWaitingMessage(@RequestParam("limit") int limit);
 
 
@@ -81,7 +81,7 @@ public interface TransactionRemoteClient {
      * 重新发送已经死亡的消息
      * @return
      */
-    @PostMapping("/retrySendDieMessage")
+    @PostMapping("/message/retrySendDieMessage")
     boolean retrySendDieMessage();
 
 
@@ -92,7 +92,7 @@ public interface TransactionRemoteClient {
      * @param pageSize
      * @return
      */
-    @GetMapping("queryMessagePage")
+    @GetMapping("/message/queryMessagePage")
     List<TransactionMessage> queryMessagePage(@RequestParam("status") int status, @RequestParam("currentPage") int currentPage, @RequestParam("pageSize") int pageSize);
 
 
