@@ -17,7 +17,6 @@ import java.util.Date;
  * @create 2020-01-10 10:20
  */
 @Service
-@Transactional
 public class StockServiceImpl implements StockService {
 
     @Autowired
@@ -25,12 +24,13 @@ public class StockServiceImpl implements StockService {
     @Autowired
     private StockMapper stockMapper;
 
+    @Transactional
     @Override
     public void buy() {
         //本地更新
         Stock stock = stockMapper.queryById(1);
         long stockId = 1L;
-        stockMapper.updateStock(stockId,stock.getCount()-1);
+        stockMapper.updateStock(stockId,1);
         //发送消息，远程添加订单
         TransactionMessage message = new TransactionMessage();
         message.setQueue("order_create_queue");

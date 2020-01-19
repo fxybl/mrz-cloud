@@ -10,8 +10,8 @@
 
     <update id="updateStock">
         update stock
-        set count=#{param2}
-        where id = #{param1}
+        set  `count`= `count - `#{count}
+        where id = #{id}
     </update>
 
 </mapper>

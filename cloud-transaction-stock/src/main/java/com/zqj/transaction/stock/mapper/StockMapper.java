@@ -1,6 +1,7 @@
 package com.zqj.transaction.stock.mapper;
 
 import com.zqj.transaction.stock.pojo.Stock;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author zqj
@@ -9,5 +10,5 @@ import com.zqj.transaction.stock.pojo.Stock;
 public interface StockMapper {
     Stock queryById(long i);
 
-    void updateStock(long id, int count);
+    void updateStock(@Param("id") long id, @Param("count") int count);
 }

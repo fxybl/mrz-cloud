@@ -3,6 +3,7 @@ package com.zqj.transaction.stock.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
@@ -16,15 +17,16 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    @Value("cloud.tx.datasource.stock.url")
+    @Value("${cloud.tx.datasource.stock.url}")
     private String url;
 
-    @Value("cloud.datasource.username")
+    @Value("${cloud.datasource.username}")
     private String username;
 
-    @Value("cloud.datasource.password")
+    @Value("${cloud.datasource.password}")
     private String password;
 
+    @Bean
     public DataSource dataSource(){
         //springboot默认的连接池
         HikariConfig config = new HikariConfig();
