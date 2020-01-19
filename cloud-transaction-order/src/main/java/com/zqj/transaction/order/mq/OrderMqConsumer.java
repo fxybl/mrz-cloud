@@ -30,14 +30,11 @@ public class OrderMqConsumer {
     @JmsListener(destination = "order_create_queue")
     public void createOrderQueue(TextMessage text){
         try {
-            //将json转换成对象
-            TransactionMessage message = JSON.parseObject(text.getText(), TransactionMessage.class);
             //消息内容
-            String msg = message.getMessage();
-            JSONObject json = JSONObject.parseObject(msg);
+            JSONObject json = JSONObject.parseObject(text.getText());
             //创建订单
             orderService.createOrder(json.getLong("goodsId"),new BigDecimal(100));
-            boolean result = remoteClient.confirmCustomerMessage(message.getId(),"cloud-transaction-order");
+            boolean result = remoteClient.confirmCustomerMessage(json.getLong("messageId"),"cloud-transaction-order");
             if(!result){
                 //确定失败，回滚
                 throw new RuntimeException("确定消息消费失败");
