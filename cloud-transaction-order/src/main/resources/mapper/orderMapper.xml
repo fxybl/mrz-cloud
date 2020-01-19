@@ -4,7 +4,7 @@
 
 <insert id="addOrder">
     insert into `order`(goodsId,money)
-    values (#{param1},#{param2})
+    values (#{goodsId},#{money})
 
 </insert>
 
