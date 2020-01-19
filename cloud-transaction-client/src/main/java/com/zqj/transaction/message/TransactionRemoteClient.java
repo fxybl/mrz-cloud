@@ -21,7 +21,7 @@ public interface TransactionRemoteClient {
      * @return
      */
     @PostMapping("/message/send")
-    Integer sendMessage(@RequestBody TransactionMessage message);
+    boolean sendMessage(@RequestBody TransactionMessage message);
 
 
 

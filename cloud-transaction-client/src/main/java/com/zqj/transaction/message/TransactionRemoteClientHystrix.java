@@ -17,8 +17,8 @@ import java.util.List;
 public class TransactionRemoteClientHystrix implements TransactionRemoteClient {
 
     @Override
-    public Integer sendMessage(TransactionMessage message) {
-        return null;
+    public boolean sendMessage(TransactionMessage message) {
+        return false;
     }
 
     @Override
