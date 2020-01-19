@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DataSourceConfig {
 
-    @Value("${cloud.datasource.message.url}")
+    @Value("${cloud.tx.datasource.message.url}")
     private String url;
 
     @Value("${cloud.datasource.username}")
