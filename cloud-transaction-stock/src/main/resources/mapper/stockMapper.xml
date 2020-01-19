@@ -10,7 +10,7 @@
 
     <update id="updateStock">
         update stock
-        set  `count`= `count - `#{count}
+        set  `count`= `count` - #{count}
         where id = #{id}
     </update>
 
