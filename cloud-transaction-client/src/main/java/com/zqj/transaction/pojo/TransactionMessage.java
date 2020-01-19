@@ -2,6 +2,7 @@ package com.zqj.transaction.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Date;
  */
 
 @Data
-public class TransactionMessage {
+public class TransactionMessage implements Serializable {
 
     //消息ID
     private Long id;
