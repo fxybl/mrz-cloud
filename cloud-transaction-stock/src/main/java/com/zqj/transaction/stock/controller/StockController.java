@@ -1,6 +1,7 @@
 package com.zqj.transaction.stock.controller;
 
 import com.zqj.transaction.stock.service.StockService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@Slf4j
 public class StockController {
 
     @Autowired
@@ -22,6 +24,7 @@ public class StockController {
             stockService.buy();
             return true;
         }catch (Exception e){
+            log.error("发生异常，异常原因：{}",e);
             return false;
         }
 
