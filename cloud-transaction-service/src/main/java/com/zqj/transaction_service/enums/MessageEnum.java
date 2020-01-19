@@ -12,7 +12,7 @@ public enum MessageEnum {
     /**
      * 消息死亡
      */
-    DIE(0),
+    DIE(2),
 
     /**
      * 消息已消费
@@ -22,7 +22,7 @@ public enum MessageEnum {
     /**
      * 消息等待消费
      */
-    WAITING(2);
+    WAITING(0);
 
     private int status;
 
