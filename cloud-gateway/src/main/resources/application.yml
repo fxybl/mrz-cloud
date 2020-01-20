@@ -32,6 +32,11 @@ spring:
           #开启小写的服务ID
           lower-case-service-id: true
       routes:
+        - id: cloud-seata-order-service
+          uri: lb://cloud-seata-order-service
+          predicates:
+            #通过Path方式对请求路径进行过滤
+            - Path=/cloud-seata-order-service/**
         - id: cloud-eureka-client-user-service
           #lb代表是从注册中心获取
           uri: lb://cloud-eureka-client-user-service
