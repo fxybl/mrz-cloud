@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * 全局异常处理器
  * @author zqj
  * @create 2019-12-26 18:08
  */
