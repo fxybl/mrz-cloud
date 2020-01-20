@@ -168,6 +168,7 @@
     </appender>
 
     <!--配置mybatis sql 日志-->
+    <!--生产环境可以注释掉-->
     <logger name="com.zqj.seata.order.mapper" level="DEBUG"/>
 
 
@@ -175,6 +176,7 @@
     <!-- 在定义后引用APPENDER -->
     <root level="${logLevel}">
         <!--  控制台  -->
+        <!--生产环境可以注释掉-->
         <appender-ref ref="STDOUT"/>
 
         <!-- 具体的日志级别和文件的配置 -->
