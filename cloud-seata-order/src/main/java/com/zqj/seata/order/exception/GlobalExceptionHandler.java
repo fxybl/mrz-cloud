@@ -68,7 +68,9 @@ public class GlobalExceptionHandler {
         }
         Result<String> result = new Result<>();
         result.setCode(466);
-        result.setMessage(list.toString());
+        log.error("请求失败，失败原因:{}",list.toString());
+        //result.setMessage(list.toString());
+        result.setMessage("未知异常");
         return result;
     }
 
