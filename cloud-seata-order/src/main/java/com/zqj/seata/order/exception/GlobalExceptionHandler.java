@@ -68,9 +68,7 @@ public class GlobalExceptionHandler {
         }
         Result<String> result = new Result<>();
         result.setCode(466);
-        log.error("请求失败，失败原因:{}",list.toString());
-        //result.setMessage(list.toString());
-        result.setMessage("未知异常");
+        result.setMessage(list.toString());
         return result;
     }
 
@@ -90,7 +88,9 @@ public class GlobalExceptionHandler {
     public Result<String> exception(Exception e){
         Result<String> result = new Result<>();
         result.setCode(488);
-        result.setMessage(e.getMessage());
+        log.error("请求失败，失败原因:{}",e);
+        result.setMessage("未知异常");
+        result.setData(e.getMessage());
         return result;
     }
 
