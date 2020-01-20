@@ -18,6 +18,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @MapperScan("com.zqj.seata.order.mapper")
 public class Main {
     public static void main(String[] args) {
+        System.setProperty("env","DEV");
         SpringApplication.run(Main.class,args);
     }
 }
