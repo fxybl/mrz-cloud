@@ -44,7 +44,7 @@
 
     <!--ALL日志记录(记录所有的)-->
     <appender name="FILE_ALL"  class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logPath}/${appName}_all.log</file>
+        <file>${logPath}/all/${appName}_all.log</file>
         <!--按天滚动-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${logPath}/%d{yyyy-MM-dd}/all/${appName}.log</fileNamePattern>
@@ -61,7 +61,7 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
-        <file>${logPath}/${appName}_debug.log</file>
+        <file>${logPath}/debug/${appName}_debug.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${logPath}/%d{yyyy-MM-dd}/debug/${appName}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>
@@ -78,7 +78,7 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
-        <file>${logPath}/${appName}_info.log</file>
+        <file>${logPath}/info/${appName}_info.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${logPath}/%d{yyyy-MM-dd}/info/${appName}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>
@@ -95,7 +95,7 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
-        <file>${logPath}/${appName}_warn.log</file>
+        <file>${logPath}/warn/${appName}_warn.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${logPath}/%d{yyyy-MM-dd}/warn/${appName}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>
@@ -112,7 +112,7 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
-        <file>${logPath}/${appName}_error.log</file>
+        <file>${logPath}/error/${appName}_error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${logPath}/%d{yyyy-MM-dd}/error/${appName}.log</fileNamePattern>
             <maxHistory>${maxHistory}</maxHistory>
@@ -167,16 +167,14 @@
         <appender-ref ref="FILE_ERROR"/>
     </appender>
 
-    <!--配置mybatis sql 日志-->
-    <!--生产环境可以注释掉-->
+    <!--配置mybatis sql 日志(生产环境可注释)-->
     <logger name="com.zqj.seata.order.mapper" level="DEBUG"/>
 
 
     <!-- 日志的记录级别 -->
     <!-- 在定义后引用APPENDER -->
     <root level="${logLevel}">
-        <!--  控制台  -->
-        <!--生产环境可以注释掉-->
+        <!--  控制台（生产环境可注释）  -->
         <appender-ref ref="STDOUT"/>
 
         <!-- 具体的日志级别和文件的配置 -->
