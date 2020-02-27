@@ -46,8 +46,20 @@ https://github.com/fxybl/mrz-cloud/tree/master/cloud-seata-order
 分布式事务的库存服务demo  
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-seata-storage   
 
-#cloud-transaction 分布式事务之最终一致性(失败后通过自动重试，重试一定次数后死亡，此后通过人工介入的方式处理)
+5.seata-server-1.0.0
+分布式事务的seata服务器(已打包)
+https://github.com/fxybl/mrz-cloud/tree/master/seata-server-1.0.0/seata
 
+6.seata-server-1.0.0
+分布式事务的seata服务器(源码)
+https://github.com/fxybl/mrz-cloud/tree/master/seata-1.0.0
+
+#apollo
+携程开源的阿波罗分布式配置中心（支持动态更新配置，无需重启服务器）  
+https://github.com/fxybl/mrz-cloud/tree/master/apollo-build-scripts  
+
+
+#cloud-transaction 分布式事务之最终一致性(失败后通过自动重试，重试一定次数后死亡，此后通过人工介入的方式处理)
 1.cloud-transaction-client  
 事务-共有接口api   
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-transaction-client   
