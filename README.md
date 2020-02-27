@@ -29,7 +29,7 @@ gateway网关
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-gateway   
 
 
-#cloud-seata AT模式（发生异常通过数据库反向回滚，相比较TCC模式，业务侵入性低）  
+#cloud-seata(阿里巴巴蚂蚁金服开源的分布式事务框架),AT模式（发生异常通过数据库反向回滚，相比较TCC模式，业务侵入性低）  
 1.cloud-seata-account  
 分布式事务的账户服务demo  
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-seata-account   
