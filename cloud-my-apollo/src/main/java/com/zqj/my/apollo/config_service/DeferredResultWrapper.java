@@ -36,7 +36,7 @@ public class DeferredResultWrapper {
     }
 
     //设置正常完成后执行的函数
-    private void onComplete(Runnable complete){
+    public void onComplete(Runnable complete){
         result.onCompletion(complete);
     }
 
