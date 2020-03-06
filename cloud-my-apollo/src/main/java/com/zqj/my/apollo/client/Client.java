@@ -16,11 +16,10 @@ public class Client {
 
     private static void register()throws Exception{
         System.out.println("开始注册");
-        String result= HttpUtils.doGet("http://localhost:8055/my_apollo_config_service/00getConfig");
+        String result= HttpUtils.doGet("http://localhost:8055/my_apollo_config_service/getConfig");
         if(result !=null){
             //重新拉取配置，然后重置springBean...
         }
         register();
-        Thread.sleep(1000);
     }
 }
