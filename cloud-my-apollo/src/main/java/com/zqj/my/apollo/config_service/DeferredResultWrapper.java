@@ -44,6 +44,7 @@ public class DeferredResultWrapper {
     public void setResult(MyApolloConfigNotification notification){
         setResult(Lists.newArrayList(notification));
     }
+
     //设置多个结果
     public void setResult(List<MyApolloConfigNotification> notifications){
         result.setResult(new ResponseEntity<>(notifications,HttpStatus.OK));
