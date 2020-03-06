@@ -6,14 +6,12 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.SocketUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -41,7 +39,7 @@ public class NotificationController {
         return "ok";
     }
 
-    @GetMapping("/getMapping")
+    @GetMapping("/getConfig")
     public DeferredResult<ResponseEntity<List<MyApolloConfigNotification>>> getConfig(){
         //定义一个需要反悔的结果包装类
         DeferredResultWrapper wrapper = new DeferredResultWrapper();
