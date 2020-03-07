@@ -1,5 +1,6 @@
 package com.zqj.seata.api.remote;
 
+import com.zqj.seata.api.pojo.Storage;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,7 @@ public interface StorageRemote {
      * @param count
      */
     @PostMapping("/storage/decrease")
-    void decrease(@RequestParam("productId")Long productId,@RequestParam("count") Integer count);
+    Storage decrease(@RequestParam("productId")Long productId, @RequestParam("count") Integer count);
 
 
 }
