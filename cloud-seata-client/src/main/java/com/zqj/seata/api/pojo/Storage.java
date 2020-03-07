@@ -32,4 +32,10 @@ public class Storage {
      * 剩余库存
      */
     private Integer residue;
+
+    /**
+     * 版本号，客观锁更新库存，防止超卖
+     */
+    private Integer version;
+
 }
