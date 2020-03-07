@@ -1,5 +1,6 @@
 package com.zqj.seata.storage.mapper;
 
+import com.zqj.seata.api.pojo.Storage;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -12,5 +13,12 @@ public interface StorageMapper {
      * @param productId
      * @param count
      */
-    void decrease(@Param("productId") Long productId, @Param("count") Integer count);
+    int decrease(@Param("productId") Long productId, @Param("count") Integer count,@Param("version") Integer version);
+
+    /**
+     * 查询库存
+     * @param productId
+     * @return
+     */
+    Storage queryStorage(@Param("productId") Long productId);
 }

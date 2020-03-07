@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zqj.seata.storage.mapper.StorageMapper">
+    <!--加入条件version，是为了防止库存超卖-->
     <update id="decrease">
         update `storage`
         set used    = used + #{count},
-            residue = residue - #{count}
+            residue = residue - #{count},
+            version = version + 1
         where product_id = #{productId}
+              and version = #{version}
 
     </update>
+
+    <select id="queryStorage" resultType="com.zqj.seata.api.pojo.Storage" parameterType="java.lang.String">
+        select used,residue,version
+        from `storage`
+        where product_id = #{productId}
+    </select>
 </mapper>
