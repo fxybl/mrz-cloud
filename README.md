@@ -58,6 +58,9 @@ https://github.com/fxybl/mrz-cloud/tree/master/seata-1.0.0
 携程开源的阿波罗分布式配置中心（支持动态更新配置，无需重启服务器）  
 https://github.com/fxybl/mrz-cloud/tree/master/apollo-build-scripts  
 
+#cloud-my-apollo 
+自写的简易版的apollo配置中心    
+https://github.com/fxybl/mrz-cloud/tree/master/cloud-my-apollo      
 
 #cloud-transaction 分布式事务之最终一致性(失败后通过自动重试，重试一定次数后死亡，此后通过人工介入的方式处理)
 1.cloud-transaction-client  
