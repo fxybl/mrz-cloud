@@ -26,6 +26,7 @@ https://github.com/fxybl/mrz-cloud/tree/master/cloud-feign-api
 
 #cloud-gateway
 gateway网关  
+包含IP过滤器，以及使用guava的RateLimiter的限流实践等等  
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-gateway   
 
 
@@ -44,6 +45,7 @@ https://github.com/fxybl/mrz-cloud/tree/master/cloud-seata-order
 
 4.cloud-seata-storage  
 分布式事务的库存服务demo  
+包含库存超卖的实践，使用redis来增加效率,通过version字段来保持原子性操作  
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-seata-storage   
 
 5.seata-server-1.0.0  
@@ -59,7 +61,9 @@ https://github.com/fxybl/mrz-cloud/tree/master/seata-1.0.0
 https://github.com/fxybl/mrz-cloud/tree/master/apollo-build-scripts  
 
 #cloud-my-apollo 
-自写的简易版的apollo配置中心    
+自写的简易版的apollo配置中心 
+包含自定的SpringValueRegistry，实现不需要重启服务器，则更新掉@Value的值，达成动态更新  
+自定义的PropertySource,实现远程拉取配置并优先性。  
 https://github.com/fxybl/mrz-cloud/tree/master/cloud-my-apollo      
 
 #cloud-transaction 分布式事务之最终一致性(失败后通过自动重试，重试一定次数后死亡，此后通过人工介入的方式处理)
